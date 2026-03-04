@@ -3,7 +3,7 @@
     "id": "1",
     "folderId": "1-intelligent-research-system",
     "title": {
-      "zh": "智能调研报告生成",
+      "zh": "智能调研报告生成111",
       "en": "Enterprise-Level Intelligent Research Report Generation System Demo"
     },
     "category": "服务,运营,管理",
@@ -29,7 +29,7 @@
     "id": "2",
     "folderId": "2-business-dashboard-website",
     "title": {
-      "zh": "业务看板搭建",
+      "zh": "业务看板搭建222",
       "en": "Business Dashboard & Website Demo"
     },
     "category": "服务,运营,营销",
@@ -49,7 +49,7 @@
       "security": "较低",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "3",
@@ -75,11 +75,11 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "4",
-    "folderId": "enterprise-demo-video",
+    "folderId": "4-enterprise-demo-video",
     "title": {
       "zh": "企业演示视频",
       "en": "Enterprise Demo Video"
@@ -101,13 +101,13 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "5",
     "folderId": "5-educational-app-children",
     "title": {
-      "zh": "儿童教育趣味应用",
+      "zh": "儿童教育趣味应用555",
       "en": "Educational App for Children Demo"
     },
     "category": "服务",
@@ -120,14 +120,14 @@
     "challenger": "私部署版：BISHENG + Kimi K2.5/GLM-5/Minimax M2.5/Qwen 3.5",
     "challengerEn": "Private Deployment: BISHENG + Kimi K2.5/GLM-5/Minimax M2.5/Qwen 3.5",
     "highlights": "一周搭建一个儿童教育应用Demo",
-    "highlightsEn": "Build a children’s educational app demo in one week",
+    "highlightsEn": "Build a childrenâs educational app demo in one week",
     "metrics": {
       "speed": "一周",
       "quality": "中等",
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "6",
@@ -153,7 +153,7 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "7",
@@ -179,11 +179,11 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "8",
-    "folderId": "intelligent-system",
+    "folderId": "8-intelligent-contract-legal-review",
     "title": {
       "zh": "智能合同法审系统",
       "en": "Intelligent Contract Legal Review System Demo"
@@ -205,11 +205,11 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "9",
-    "folderId": "system",
+    "folderId": "9-universal-object-detection",
     "title": {
       "zh": "通用目标检测系统",
       "en": "Universal Object Detection System Demo"
@@ -231,7 +231,7 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "10",
@@ -257,11 +257,11 @@
       "security": "较高",
       "cost": "中等"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "11",
-    "folderId": "feature-recommendation-assistant-demo",
+    "folderId": "11-feature-recommendation-assistant",
     "title": {
       "zh": "功能推荐助手",
       "en": "Feature Recommendation Assistant Demo"
@@ -283,7 +283,7 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "12",
@@ -309,11 +309,11 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   },
   {
     "id": "13",
-    "folderId": "single",
+    "folderId": "13-single-industrial-chain-graph",
     "title": {
       "zh": "单条产业链图谱",
       "en": "Single Industrial Chain Graph"
@@ -335,6 +335,6 @@
       "security": "较高",
       "cost": "较优"
     },
-    "hasContent": false
+    "hasContent": true
   }
 ]

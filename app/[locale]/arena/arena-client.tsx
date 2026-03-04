@@ -6,7 +6,7 @@ import { useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { categories, industries } from '@/lib/data';
+import { categories, industries } from '@/lib/arena-taxonomy';
 import type { Arena } from '@/lib/types';
 import { Shield, Trophy, Filter, ArrowUpDown, ArrowUp, ArrowDown, Code2, Search, Check, Zap, Star, DollarSign } from 'lucide-react';
 

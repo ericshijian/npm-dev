@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { ArenaDetailClient } from './client-page';
 import { getAllArenasFromStaticData } from '@/lib/static-data';
 import { getArenaContent } from '@/lib/content';
+import type { ArenaContentValue } from '@/lib/static-data';
 
 export const dynamicParams = false;
 
@@ -23,9 +24,9 @@ export default async function ArenaDetailPage({
     notFound();
   }
 
-  // Load content from exported static JSON, fallback to markdown files.
+  // Load content from exported static JSON only.
   const tabs = ['overview', 'implementation', 'tech-configuration', 'requirements', 'validation-report', 'project-report'] as const;
-  const content: Record<string, string> = {};
+  const content: Record<string, ArenaContentValue> = {};
   for (const tab of tabs) {
     const contentFile = await getArenaContent(arena.folderId, tab, locale);
     if (contentFile?.content) {

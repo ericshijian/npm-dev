@@ -76,12 +76,12 @@ else
 fi
 
 echo ""
-echo "4️⃣  Checking data.ts for proper i18n fields..."
+echo "4️⃣  Checking exported arena JSON for proper i18n fields..."
 echo ""
 
-# Check if arenas have both en/zh fields
-DATA_CHECK=$(grep -c "championEn:" lib/data.ts 2>/dev/null || echo "0")
-TOTAL_ARENAS=$(grep -c "id:" lib/data.ts 2>/dev/null || echo "0")
+# Check if arenas have both en/zh fields in exported static JSON
+DATA_CHECK=$(grep -c "\"championEn\"" public/data/arenas.json 2>/dev/null || echo "0")
+TOTAL_ARENAS=$(grep -c "\"id\"" public/data/arenas.json 2>/dev/null || echo "0")
 
 if [ "$DATA_CHECK" -eq "$TOTAL_ARENAS" ]; then
   echo -e "${GREEN}✓ All arenas have championEn field${NC}"

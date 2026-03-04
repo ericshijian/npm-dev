@@ -7,7 +7,6 @@ const EXCEL_FILE = path.join(process.cwd(), 'Content/Arena/List of Arenas.xlsx')
 const OUTPUT_RAW_MD = path.join(process.cwd(), 'Content/Arena/page.raw.md');
 const OUTPUT_ZH_MD = path.join(process.cwd(), 'Content/Arena/page.zh.md');
 const OUTPUT_EN_MD = path.join(process.cwd(), 'Content/Arena/page.en.md');
-const OUTPUT_DATA_TS = path.join(process.cwd(), 'lib/data.ts');
 
 interface ArenaRow {
   __EMPTY: number | string;  // 擂台编号
@@ -671,12 +670,6 @@ function main() {
   const englishMarkdown = generateEnglishMarkdown(arenas);
   fs.writeFileSync(OUTPUT_EN_MD, englishMarkdown, 'utf-8');
   console.log('[sync-arena-list] ✓ Updated page.en.md');
-
-  // Step 4: Generate and write lib/data.ts
-  console.log('[sync-arena-list] Writing to:', OUTPUT_DATA_TS);
-  const typescript = generateTypeScriptData(arenas);
-  fs.writeFileSync(OUTPUT_DATA_TS, typescript, 'utf-8');
-  console.log('[sync-arena-list] ✓ Updated lib/data.ts');
 
   console.log('');
   console.log(`=== Sync Complete ===`);

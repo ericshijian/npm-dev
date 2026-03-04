@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Arena } from '@/lib/types';
-import { industries } from '@/lib/data';
+import { industries } from '@/lib/arena-taxonomy';
 
 interface FeaturedArenasShowcaseProps {
   arenas: Arena[];

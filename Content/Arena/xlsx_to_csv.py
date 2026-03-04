@@ -9,10 +9,17 @@ import zipfile
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-NS_MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
-NS_REL_DOC = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-NS_PKG_REL = "http://schemas.openxmlformats.org/package/2006/relationships"
-NS = {"m": NS_MAIN, "r": NS_REL_DOC, "pr": NS_PKG_REL}
+NS_MAIN = "https://schemas.openxmlformats.org/spreadsheetml/2006/main"
+NS_REL_DOC = "https://schemas.openxmlformats.org/officeDocument/2006/relationships"
+NS_PKG_REL = "https://schemas.openxmlformats.org/package/2006/relationships"
+
+
+def get_relationship_id(sheet: ET.Element) -> str | None:
+    # Handle both namespaced and non-namespaced id attributes.
+    for key, value in sheet.attrib.items():
+        if key == "r:id" or key.endswith("}id"):
+            return value
+    return None
 
 
 def sanitize_sheet_name(name: str) -> str:
@@ -42,8 +49,8 @@ def parse_shared_strings(zipf: zipfile.ZipFile) -> list[str]:
 
     root = load_xml(zipf, "xl/sharedStrings.xml")
     items: list[str] = []
-    for si in root.findall("m:si", NS):
-        text_parts = [t.text or "" for t in si.findall(".//m:t", NS)]
+    for si in root.findall("{*}si"):
+        text_parts = [t.text or "" for t in si.findall(".//{*}t")]
         items.append("".join(text_parts))
     return items
 
@@ -53,7 +60,7 @@ def parse_sheet_paths(zipf: zipfile.ZipFile) -> list[tuple[str, str]]:
     rels = load_xml(zipf, "xl/_rels/workbook.xml.rels")
 
     rel_map: dict[str, str] = {}
-    for rel in rels.findall("pr:Relationship", NS):
+    for rel in rels.findall("{*}Relationship"):
         rel_id = rel.attrib.get("Id")
         target = rel.attrib.get("Target")
         if rel_id and target:
@@ -61,9 +68,9 @@ def parse_sheet_paths(zipf: zipfile.ZipFile) -> list[tuple[str, str]]:
             rel_map[rel_id] = full_path
 
     results: list[tuple[str, str]] = []
-    for sheet in workbook.findall("m:sheets/m:sheet", NS):
+    for sheet in workbook.findall("{*}sheets/{*}sheet"):
         name = sheet.attrib.get("name", "Sheet")
-        rel_id = sheet.attrib.get(f"{{{NS_REL_DOC}}}id")
+        rel_id = get_relationship_id(sheet)
         if not rel_id:
             continue
         path = rel_map.get(rel_id)
@@ -77,10 +84,10 @@ def read_cell_value(cell: ET.Element, shared_strings: list[str]) -> str:
     cell_type = cell.attrib.get("t")
 
     if cell_type == "inlineStr":
-        parts = [t.text or "" for t in cell.findall(".//m:t", NS)]
+        parts = [t.text or "" for t in cell.findall(".//{*}t")]
         return "".join(parts)
 
-    v = cell.find("m:v", NS)
+    v = cell.find("{*}v")
     if v is None or v.text is None:
         return ""
 
@@ -101,9 +108,9 @@ def parse_sheet_rows(zipf: zipfile.ZipFile, sheet_path: str, shared_strings: lis
     row_maps: list[dict[int, str]] = []
     max_col = 0
 
-    for row in root.findall("m:sheetData/m:row", NS):
+    for row in root.findall("{*}sheetData/{*}row"):
         row_map: dict[int, str] = {}
-        for cell in row.findall("m:c", NS):
+        for cell in row.findall("{*}c"):
             ref = cell.attrib.get("r", "")
             col_idx = col_letters_to_index(ref)
             row_map[col_idx] = read_cell_value(cell, shared_strings)

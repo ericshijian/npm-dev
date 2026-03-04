@@ -1,5 +1,5 @@
 import { Button, Badge } from '@/components/ui';
-import { industries, categories } from '@/lib/data';
+import { industries, categories } from '@/lib/arena-taxonomy';
 import { Arena } from '@/lib/types';
 import { CheckCircle2, Trophy, Star, ArrowRight, Building2, ShoppingCart, GraduationCap, HeartPulse, Zap, Factory, Building, Target, Users, Code2, Layers, FlaskRound, Copy, Shield } from 'lucide-react';
 import Link from 'next/link';

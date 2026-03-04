@@ -1,0 +1,250 @@
+{
+  "steps": [
+    {
+      "number": 1,
+      "title": "Install Docker",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Installation of docker (including docker-compose)"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Backend Engineer",
+            "Skills: Familiar with docker installation and usage",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: Install docker on Ubuntu series operating systems (Ubuntu-22.04, etc.)",
+            "Input Description: First ensure a cloud server is set up with resources meeting 'CPU >= 8 cores, Memory >= 32GB', and choose Ubuntu as the operating system. Once the server is running normally, complete the docker installation via command line operations",
+            "Resource Link: Docker Docs: https://docs.docker.com/"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Runnable docker service",
+            "Output Description: Docker enables convenient installation of the Bisheng framework and related services required for this solution, so first ensure docker is correctly installed"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.25-0.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Deploy Bisheng Platform",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Deploy Bisheng platform via docker"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Backend/Algorithm Engineer",
+            "Skills: Familiar with docker, master private deployment of common agent platforms (such as Bisheng, Dify, etc.)",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: Pull Bisheng image via docker",
+            "Input Description: First download the Bisheng project files from Github, which contains docker configuration files. After running the project files, it will pull the docker image for this solution from Bisheng's docker repository and start the service",
+            "Resource Link: Bisheng project files on Github: https://github.com/dataelement/bisheng"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Available Bisheng platform service",
+            "Output Description: After running the Bisheng platform service, production-level agent workflows can be built through this platform"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1-2.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Import Workflow for This Solution",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Download the pre-built workflow json file for this solution on Bisheng platform and import it into the running Bisheng platform"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Product Manager/Backend/Algorithm Engineer",
+            "Skills: Proficient in using common low-code (drag-and-drop) agent workflow building platforms (such as Bisheng, Dify, etc.)",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: Bisheng workflow json file",
+            "Input Description: Create a blank workflow on Bisheng platform and import the prepared json file into it",
+            "Resource Link: Bisheng Community - Featured Workflows (last row, author zh): Build 100 Workflows [Activity]"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: A brain teaser application to be run (agent workflow)",
+            "Output Description: This application meets the goals of this solution and supports version management, publishing, API calls, and other features"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1 hour"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Configure Large Language Model",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Configure common large language models on Bisheng platform to support calls from various applications (workflows, agents, etc.) on the platform"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Backend/Algorithm Engineer",
+            "Skills: Master LLM configuration for common agent platforms (such as Bisheng, Dify, etc.)",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: API key and base url of the LLM to be used",
+            "Input Description: Configure LLM API related information in 'Bisheng Platform Model Management Interface' and set the default system model. This step recommends using LLM API based on SiliconFlow platform",
+            "Resource Link: SiliconFlow official website LLM page: https://cloud.siliconflow.cn/me/models"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Configured LLM",
+            "Output Description: A configured LLM available for all applications on the Bisheng platform, no need to reconfigure for subsequent applications using existing models"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "2 hours"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Test Workflow via Web Page",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "After LLM configuration is complete, find the previously configured application on Bisheng platform and click run to test the workflow. As an extension attempt, it is also recommended to read Bisheng's official workflow building tutorial, so you can adjust/build workflows yourself for personalized modifications"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Product Manager/Backend/Algorithm Engineer",
+            "Skills: Familiar with using common agent platforms (such as Bisheng, Dify, etc.)",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: Workflow usage options and interactions",
+            "Input Description: Select brain teaser type, start answering and other usage interactions",
+            "Resource Link: Bisheng official workflow building tutorial: BISHENG workflow"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: A runnable brain teaser application",
+            "Output Description: After testing passes, it can be directly published online"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5 - 1.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Call Workflow via API",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Combine with specific business scenarios to integrate the brain teaser workflow into existing processes via Bisheng's API"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Backend/Algorithm Engineer",
+            "Skills: Master at least one backend language (such as Python, Java, Go, etc.), familiar with HTTP-based API service encapsulation",
+            "Quantity: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: URL and workflow_id after workflow publishing",
+            "Input Description: Generally given directly on the External Publishing - API Access page, then initiate http requests via Python/Java etc. to call the workflow",
+            "Resource Link: Bisheng official API tutorial for publishing workflows: Workflow External Publishing API"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Independent API service based on this solution's workflow",
+            "Output Description: Can be flexibly embedded into related business systems"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.25-0.5 days"
+          ]
+        }
+      ]
+    }
+  ]
+}

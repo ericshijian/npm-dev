@@ -59,17 +59,18 @@ npm run build
 
 然后把 `out/` 目录发布到 GitHub Pages。
 
-### 3. SQLite 数据导出与覆盖策略
+### 3. 静态数据来源
 
-构建时会运行 `npm run export-static-data`，导出到 `public/data/`：
+数据直接从 `Content/Arena/` 目录下的 CSV 和 JSON 文件读取：
 
-- `public/data/arenas.json`
-- `public/data/arena-content.json`
-- `public/data/sqlite-export.json`
-
-规则：
-- 若存在 `tmp/data/rwai-arena.sqlite`，则以 SQLite 为准导出，并覆盖旧 JSON
-- 若 SQLite 不存在，回退到 `lib/data.ts` + markdown 内容导出
+- `Content/Arena/List of Arenas ZH.csv` - 擂台基础信息（中文）
+- `Content/Arena/List of Arenas EN.csv` - 擂台基础信息（英文）
+- `Content/Arena/All Arenas/{folder}/overview.zh.json` - 中文概览
+- `Content/Arena/All Arenas/{folder}/overview.en.json` - 英文概览
+- `Content/Arena/All Arenas/{folder}/implementation.zh.json` - 中文实施方案
+- `Content/Arena/All Arenas/{folder}/implementation.en.json` - 英文实施方案
+- `Content/Arena/All Arenas/{folder}/tech-configuration.zh.json` - 中文技术配置
+- `Content/Arena/All Arenas/{folder}/tech-configuration.en.json` - 英文技术配置
 
 ## 项目结构
 
@@ -83,7 +84,6 @@ npm run build
 │   ├── layout/           # 布局组件
 │   └── ui/               # UI组件
 ├── lib/
-│   ├── data.ts           # 核心数据
 │   ├── types.ts          # 类型定义
 │   └── utils.ts          # 工具函数
 ├── locales/
@@ -109,4 +109,3 @@ npm run build
 ## 许可证
 
 MIT
-

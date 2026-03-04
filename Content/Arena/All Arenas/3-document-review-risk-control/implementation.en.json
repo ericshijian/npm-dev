@@ -1,0 +1,191 @@
+{
+  "phases": [
+    {
+      "number": 1,
+      "title": "PHASE 1 Requirement Identification and Team Building",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "**Business Liaison (x1)**: Familiar with the organization, processes, and decision-making pathways of the business work corresponding to this case, skilled in communication, familiar with basic project management and product requirement organization methods",
+            "**Business-side Technical Liaison (x1)**: Usually the technical liaison and person in charge for the final engineering implementation of this case, assisting the business liaison in technical-level communication",
+            "**Algorithm Liaison (x1)**: Familiar with the industry-standard technical architecture and processes, construction and planning for the business work corresponding to this case, skilled in communication, and has strong execution capabilities"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "The business liaison and technical liaison conduct initial requirement contact and brainstorming sessions with the algorithm liaison to organize the core requirements of this case",
+            "The business liaison and algorithm liaison form a working group and contact group, clarifying the liaisons and contact methods",
+            "The business liaison clearly describes in text form to the algorithm liaison the objectives and expected outcomes of this document parsing task",
+            "Both parties communicate to supplement other materials needed for requirement confirmation, such as sample documents, target field lists, example outputs, document parsing business rules and experiences, etc.",
+            "The algorithm liaison conducts requirement assessment based on the meeting content and feedback documents and materials from both parties"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "Template: [Project Collaboration Requirement Inquiry Template](https://gvxnc4ekbvn.feishu.cn/wiki/TXOqw6LDKiN1FrkhRtvcT6JdnVc?from=from_copylink)",
+            "Template: [Subtask Algorithm Requirement Template](https://gvxnc4ekbvn.feishu.cn/wiki/Z4U4wXExviT9UOkeJIGc8EnKnAh?from=from_copylink)"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "Establishment of working group with clarified liaisons and contact methods",
+            "Completion of project collaboration requirement form with preliminary requirement organization"
+          ]
+        },
+        {
+          "title": "Implementation Period",
+          "content": [
+            "1-2 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "PHASE 2 Value Confirmation and Requirement Refinement",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "**Business Liaison (x1)**: Same as PHASE 1",
+            "**Business Expert (x1)**: Leader, executor, or expert involved in core business modules of the business work corresponding to this case, assisting the business liaison in clarifying business pain points and value",
+            "**Product Manager (x1)**: Familiar with the organization, processes, and decision-making pathways of the business work corresponding to this case, skilled in communication, assisting the business liaison in refining requirements and designing prototypes, this position can be provided by the undertaking party",
+            "**Business-side Technical Liaison (x1)**: Same as PHASE 1",
+            "**Algorithm Liaison (x1)**: Same as PHASE 1",
+            "**Algorithm Expert (x1)**: Familiar with current industry cutting-edge and general technical solutions and selections across various scenarios and applications, assisting the algorithm liaison in assessing requirements, coordinating team research, designing solutions and architectures, and assisting in schedule evaluation"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "The business liaison communicates with their business experts and related teams to confirm the expected goals and business value of this solution implementation. Business value should be quantified as much as possible with comparative data (such as current numbers, expected target achievements, expected degree of improvement compared to current status, etc.)",
+            "The algorithm liaison communicates with their algorithm experts and related teams to list pending confirmation items while conducting preliminary research, assessment, and design of the solution",
+            "The product manager communicates with the business liaison and algorithm liaison to organize and clarify requirements, then organizes relevant personnel from both parties to write the preliminary verify requirement document",
+            "Both parties confirm requirements based on the preliminary verify requirement document, and plan schedules, budgets, and resources according to confirmed requirements. Schedule recommendation: First, take the contractor's completion of preliminary verification, selection, Demo production, and passing PoC as the first milestone; afterwards, both parties further negotiate formal project initiation and implementation",
+            "Repeat the above steps until the preliminary verify requirement document is finalized"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "Template: [Preliminary Verify Requirement Document Template](https://gvxnc4ekbvn.feishu.cn/wiki/PC8FwObgwiMwVPkM0i4cYkr2nYf?from=from_copylink)"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "Preliminary verify requirement document",
+            "PoC-related matters confirmation, such as start time, acceptance time, acceptance plan, etc."
+          ]
+        },
+        {
+          "title": "Implementation Period",
+          "content": [
+            "2-3 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "PHASE 3 Preliminary Verification and Project Initiation",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "**Business Liaison (x1)**: Same as PHASE 1",
+            "**Algorithm Liaison (x1)**: Same as PHASE 1",
+            "**Algorithm Engineer (x1)**: Familiar with Python virtual environment management, package management tools, etc.; familiar with LangChain, RAG, prompt engineering, base model deployment and invocation, and other related skills"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "Resource preparation and environment configuration",
+            "Use the unstructured.io library to perform deep layout-aware parsing of input PDF documents, converting them into structured semantic elements (Elements)",
+            "According to the target interface document, use the Pydantic library to define a strictly corresponding Python BaseModel class containing nested models",
+            "Use LangChain Expression Language (LCEL) to orchestrate a complete Retrieval-Augmented Generation (RAG) pipeline: parser -> chunker -> retriever -> prompt -> base model -> structured output parser, to automatically process PDFs and generate target JSON",
+            "The algorithm team writes the preliminary verify report",
+            "Complete PoC",
+            "Both parties maintain close communication to confirm whether to formally initiate the project",
+            "If planning to formally initiate the project, both parties adjust the Demo effect plan, finalize the project initiation report, and prepare the project initiation agreement and startup matters"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "LangChain GitHub: https://github.com/langchain-ai/langchain",
+            "transformers Github: https://github.com/huggingface/transformers",
+            "Langchain-community Github: https://github.com/langchain-ai/langchain-community",
+            "Pydantic Github: https://github.com/pydantic/pydantic",
+            "accelerate Github: https://github.com/huggingface/accelerate",
+            "sentence-transformers Github: https://github.com/huggingface/sentence-transformers",
+            "unstructured Github: https://github.com/Unstructured-IO/unstructured",
+            "Faiss Github: https://github.com/facebookresearch/faiss",
+            "Template: [Preliminary Verify Report Template](https://gvxnc4ekbvn.feishu.cn/wiki/HKZGwXetBije9HklRQmcAe94nZE?from=from_copylink)"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "Finalize and deliver the preliminary verify report",
+            "Complete Demo construction, prepare for and finally pass PoC",
+            "Project initiation report",
+            "Project initiation agreement (appendix should include delivery, acceptance, schedule, resources, etc. for the formal release version)"
+          ]
+        },
+        {
+          "title": "Implementation Period",
+          "content": [
+            "3.5-5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "PHASE 4 Formal Launch and Optimization Iteration",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "Determined according to the project initiation report"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "Complete formal project initiation and determine the start time",
+            "Implement and deliver according to the project initiation report content and schedule plan",
+            "Review and accept according to the project initiation report goals and processes",
+            "Operate and iterate according to the project initiation report plan",
+            "Complete project closure according to the project initiation report plan and agreement stipulations"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "/"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "All materials agreed upon by both parties throughout the project lifecycle",
+            "Formally launched product"
+          ]
+        },
+        {
+          "title": "Implementation Period",
+          "content": [
+            "3-6 months (varies depending on specific circumstances)"
+          ]
+        }
+      ]
+    }
+  ]
+}

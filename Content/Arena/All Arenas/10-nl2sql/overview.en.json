@@ -1,0 +1,111 @@
+{
+  "highlight": "Rapidly build a large model that generates SQL scripts via conversation",
+  "industry": "Information Technology",
+  "category": "Service",
+  "cycle": "One Week",
+  "case_no": "Case251031X02",
+  "sections": [
+    {
+      "title": "1. Business Highlights",
+      "subsections": [
+        {
+          "title": "Highlights",
+          "content": [
+            "- Rapidly build a large model that generates SQL scripts via conversation"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. Basic Information",
+      "subsections": [
+        {
+          "title": "2.1 Overview",
+          "content": [
+            "**Business Background**: Convert user query requirements described in natural language into SQL query statements.",
+            "**Solution**: Use the XiYanSQL-QwenCoder model series, which is currently the open-source SOTA for NL2SQL tasks, to rapidly build a large model that generates SQL scripts via conversation."
+          ]
+        },
+        {
+          "title": "2.2 Classification Tags",
+          "content": [
+            "**Industry**: Information Technology",
+            "**Application Category**: Service",
+            "**Technology Category**: Large Language Model (LLM), Natural Language Processing, Data Governance, Foundation Model, Model Evaluation, NL2SQL, Database, Operations"
+          ]
+        },
+        {
+          "title": "2.3 Implementation Cycle",
+          "content": [
+            "- Demo Development: 2-4 days"
+          ]
+        },
+        {
+          "title": "2.4 Team Composition",
+          "content": [
+            "- Demo Phase: 1 Business Expert, 1 Algorithm Expert"
+          ]
+        },
+        {
+          "title": "2.5 Business Pain Points",
+          "content": [
+            "- Traditional database operations require dedicated operations personnel or database administrators, with high requirements for SQL language proficiency; algorithm personnel who need specific data also face learning costs for SQL language",
+            "- Traditional manual approval processes are cumbersome and inefficient",
+            "- High data flow and large data volumes bring additional challenges to the task"
+          ]
+        },
+        {
+          "title": "2.6 Core Functions",
+          "content": [
+            "- **User Instruction Understanding**: Accurately understand SQL language generation requirements expressed in user's natural language",
+            "- **Optimal SQL Script Generation**: Filter and obtain multiple candidate SQL instruction patterns based on user requirements, integrate, check, and sort them, and return the optimal result"
+          ]
+        },
+        {
+          "title": "2.7 Core Business Metrics",
+          "content": [
+            "- Time to generate a single SQL script does not exceed 1 second",
+            "- Average accuracy of generated SQL scripts reaches 95%",
+            "- Reduce labor costs by 50%"
+          ]
+        },
+        {
+          "title": "2.8 Core Technical Metrics",
+          "content": [
+            "- Consistent with business metrics"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. Best Practice Version",
+      "subsections": [
+        {
+          "title": "3.1 Private Deployment - Server Deployment Version",
+          "content": [
+            "**Reason for Selection as Best Practice**: This solution uses the XiYanSQL-QwenCoder model series, which is currently the open-source SOTA for NL2SQL tasks. The latest 32B parameter model XiYanSQL-QwenCoder-32B-2504, in comparison with 10+ leading NL2SQL task methods including but not limited to MCS-SQL+GPT-4o, achieved SOTA results with Execution Accuracy (EX-score) of 75.63% on the classic benchmark BIRD and EX value of 89.65% on the classic benchmark Spider Test. This solution provides steps for rapid deployment based on this model and gives the process of reproduction and testing based on the benchmark BIRD, ensuring the solution is complete and reproducible.",
+            "",
+            "**Practitioner Information**:",
+            "- Name: Real-World AI Repost and Verification",
+            "",
+            "**Original Author Information**:",
+            "- Chinese Name: Alibaba Cloud Team",
+            "- English Name: Alibaba Cloud XGenerationLab",
+            "- Author Website: https://cn.aliyun.com/product/bailian/xiyan",
+            "",
+            "**Related References**:",
+            "- XiYan-SQL (by Alibaba) Github: https://github.com/XGenerationLab/XiYan-SQL",
+            "- XiYanSQL-QwenCoder (by Alibaba) GitHub: https://github.com/XGenerationLab/XiYanSQL-QwenCoder",
+            "",
+            "**Version Status**:",
+            "- Initial Release Date: 2025-03-xx",
+            "- Last Updated: 2025-10-31",
+            "- Last Reviewed: 2025-11-09",
+            "",
+            "**Implementation Details**: [Practice Details](https://gvxnc4ekbvn.feishu.cn/wiki/MwQwwdPv6iLNX0kRgS9c2eW0ndf?from=from_copylink)"
+          ]
+        }
+      ]
+    }
+  ]
+}

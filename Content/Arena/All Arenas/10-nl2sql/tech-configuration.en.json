@@ -1,0 +1,214 @@
+{
+  "steps": [
+    {
+      "number": 1,
+      "title": "Resource Preparation and Environment Configuration",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Obtain and preprocess open-source models and benchmark datasets, and complete the hardware and software environment configuration required for the proposed solution."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Algorithm Engineer",
+            "Skill Requirements:",
+            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
+            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
+            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "Proactive attitude, organized communication, curiosity and self-motivation",
+            "Number of Roles: 1 person"
+          ]
+        },
+        {
+          "title": "Step Input",
+          "content": [
+            "Input Name: Resources Required for Environment Configuration",
+            "Input Description:",
+            "Check if the hardware meets the following requirements: GPU preferably NVIDIA A10 or above, VRAM >= 16GB, CPU >= 8 cores, RAM >= 32GB, operating system Linux (Ubuntu 20.04+).",
+            "Download and install the required software resources:",
+            "Configure vLLM model framework",
+            "Download BIRD Bench dataset",
+            "Download the code for XiYanSQL-QwenCoder model and understand its basic usage",
+            "(Optional) Download and read BIRD benchmark paper to understand its basic information and usage",
+            "Input Example:",
+            "Checklist for self-verification:",
+            "NVIDIA A10 or above",
+            "VRAM >= 16GB",
+            "CPU >= 8 cores",
+            "RAM >= 32GB",
+            "Sample format example:",
+            "Resource Links:",
+            "vLLM Installation Documentation: https://vllm.hyper.ai/docs/getting-started/installation",
+            "XiYanSQL-QwenCoder Code Github: https://github.com/XGenerationLab/XiYanSQL-QwenCoder",
+            "XiYanSQL-QwenCoder Paper Github: https://qwenlm.github.io/blog/qwen3-coder/",
+            "BIRD Benchmark (training and validation sets) Github: https://bird-bench.github.io/",
+            "BIRD Benchmark Paper arXiv: https://arxiv.org/abs/2507.04701"
+          ]
+        },
+        {
+          "title": "Step Output",
+          "content": [
+            "Output Name: Environment Configuration Resources Ready",
+            "Output Description: Server configured with GPU drivers, Docker, vLLM, meeting hardware and system requirements for model deployment; BIRD Bench dataset downloaded and extracted. Environment displays 'configuration successful', dataset downloaded locally as files."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1-2 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "XiYanSQL-QwenCoder Model Download and Deployment",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "After the environment configuration is ready, complete the model file download and configuration for the required large model, and verify that the model can run normally and implement NL2SQL functionality."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Algorithm Engineer",
+            "Skill Requirements:",
+            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
+            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
+            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "Proactive attitude, organized communication, curiosity and self-motivation",
+            "Number of Roles: 1 person"
+          ]
+        },
+        {
+          "title": "Step Input",
+          "content": [
+            "Input Name: Ready Environment, Model Configuration Resources",
+            "Input Description:",
+            "Download model files",
+            "Install and configure the downloaded model files",
+            "Run the large model and confirm normal operation",
+            "Input Example: Model Download and Model Deployment",
+            "Model Deployment (based on vLLM):",
+            "```python",
+            "from vllm import LLM, SamplingParams",
+            "from transformers import AutoTokenizer",
+            "",
+            "# Model path",
+            "model_path = \"XGenerationLab/XiYanSQL-QwenCoder-32B-2504\" # Replace with local model path",
+            "",
+            "# Initialize LLM and tokenizer",
+            "llm = LLM(model=model_path, tensor_parallel_size=8) # Adjust tensor_parallel_size based on GPU count",
+            "tokenizer = AutoTokenizer.from_pretrained(model_path)",
+            "",
+            "# Configure sampling parameters",
+            "sampling_params = SamplingParams(",
+            "    n=1,",
+            "    temperature=0.1,",
+            "    max_tokens=1024",
+            ")",
+            "",
+            "# Prepare prompt",
+            "prompt = nl2sqlite_template_cn.format(",
+            "    dialect=\"PostgreSQL\", # Select appropriate dialect",
+            "    question=\"Your question\",",
+            "    db_schema=\"Database schema information\",",
+            "    evidence=\"Reference information (optional)\"",
+            ")",
+            "",
+            "# Build conversation",
+            "message = [{'role': 'user', 'content': prompt}]",
+            "text = tokenizer.apply_chat_template(",
+            "    message,",
+            "    tokenize=False,",
+            "    add_generation_prompt=True",
+            ")",
+            "",
+            "# Inference",
+            "outputs = llm.generate([text], sampling_params=sampling_params)",
+            "response = outputs[0].outputs[0].text",
+            "print(response)",
+            "```",
+            "Resource Link:",
+            "XiYanSQL-QwenCoder Model File HuggingFace: https://huggingface.co/XGenerationLab/XiYanSQL-QwenCoder-32B-2504"
+          ]
+        },
+        {
+          "title": "Step Output",
+          "content": [
+            "Output Name: Model Ready",
+            "Output Description: Model installed and running successfully, capable of receiving natural language question input and accurately outputting corresponding SQL statements."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Evaluation Based on Bird Bench Dataset",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Use Bird Bench dev (validation set) to evaluate the deployed model, calculate core metrics, compare with benchmark performance on the leaderboard, and ensure the model meets current solution requirements while being operational."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Algorithm Engineer",
+            "Skill Requirements:",
+            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
+            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
+            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "Proactive attitude, organized communication, curiosity and self-motivation",
+            "Number of Roles: 1 person"
+          ]
+        },
+        {
+          "title": "Step Input",
+          "content": [
+            "Input Name: Ready Model, Ready Bird Bench Validation Set, Evaluation Script",
+            "Input Description:",
+            "Ensure model and validation set are ready",
+            "Obtain Bird Bench evaluation script and ensure it can run normally",
+            "Run the model on validation set and use evaluation script for metric evaluation, record results and compare with Bird Bench official baseline",
+            "Input Example:",
+            "Run evaluation script via command line:",
+            "```bash",
+            "poetry run python -u ./bird_evaluation/src/evaluation.py \\",
+            "    --predicted_sql_path ./mock_dataset/ --ground_truth_path ./mock_dataset/ \\",
+            "    --db_root_path ./mock_dataset/databases/ --data_mode mock \\",
+            "    --diff_json_path ./mock_dataset/questions.json",
+            "```",
+            "Resource Link:",
+            "Bird bench evaluation script GitHub: https://github.com/arcwisedata/bird-sql"
+          ]
+        },
+        {
+          "title": "Step Output",
+          "content": [
+            "Output Name: Model Evaluation Results",
+            "Output Description: Output the results of model evaluation on the benchmark, including metrics such as logical accuracy and execution accuracy. After comparing with Bird Bench official baseline, results are labeled and meet solution requirements."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
+      ]
+    }
+  ]
+}

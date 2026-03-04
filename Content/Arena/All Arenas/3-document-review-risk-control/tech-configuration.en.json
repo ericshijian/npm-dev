@@ -1,0 +1,209 @@
+{
+  "steps": [
+    {
+      "number": 1,
+      "title": "Environment and Dependency Preparation",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Configure Python 3.10+ environment and install all core libraries required for the SOTA pipeline."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Algorithm Engineer",
+            "Skills Required:",
+            "Familiar with Python virtual environment management (venv or conda)",
+            "Familiar with pip and other package management tools, including handling complex peer dependencies",
+            "Number of Roles: 1 person"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: requirements.txt file",
+            "Input Description:",
+            "Contains all required Python packages, especially unstructured and its additional dependencies for PDF parsing",
+            "Input Example:",
+            "# Orchestration and Core Logic",
+            "langchain",
+            "langchain-community",
+            "pydantic",
+            "# LLM and Embeddings (using Ollama and open-source models as examples)",
+            "langchain-ollama",
+            "transformers",
+            "accelerate",
+            "sentence-transformers",
+            "# SOTA Parsing Layer",
+            "unstructured[pdf] # Key: [pdf] includes PDF parsing dependencies",
+            "# Retrieval Layer",
+            "faiss-cpu",
+            "Resource Links:",
+            "LangChain GitHub: https://github.com/langchain-ai/langchain",
+            "transformers Github: https://github.com/huggingface/transformers",
+            "Langchain-community Github: https://github.com/langchain-ai/langchain-community",
+            "Pydantic Github: https://github.com/pydantic/pydantic",
+            "accelerate Github: https://github.com/huggingface/accelerate",
+            "sentence-transformers Github: https://github.com/huggingface/sentence-transformers",
+            "unstructured Github: https://github.com/Unstructured-IO/unstructured",
+            "Faiss Github: https://github.com/facebookresearch/faiss"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Configured Virtual Environment",
+            "Output Description: An isolated Python environment containing all SOTA dependencies. Note: unstructured[pdf] may require additional system-level dependencies such as poppler-utils and tesseract-ocr."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "SOTA Document Parsing Layer: Layout-Aware Parsing",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Use the unstructured.io library to perform deep layout-aware parsing on input PDF documents, converting them into structured semantic elements."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: AI Algorithm Engineer",
+            "Skills Required:",
+            "Familiar with unstructured.io library",
+            "Understand the impact of different parsing strategies (fast vs hi_res) on performance and accuracy",
+            "Familiar with LangChain's DocumentLoader interface",
+            "Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: PDF Document",
+            "Input Description: Complex semi-structured PDF containing text, tables, and multi-level headings"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Structured Document Element List (List of unstructured.documents.elements.Element)",
+            "Output Description: A Python list where each element is classified as Title, NarrativeText, Table, etc., laying the foundation for subsequent semantic chunking and retrieval."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Structured Output Schema Definition",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Define a strictly corresponding Python BaseModel class with nested models using Pydantic based on the target API documentation."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: AI Algorithm Engineer / Backend Engineer",
+            "Skills Required:",
+            "Proficient in Pydantic BaseModel definition",
+            "Able to translate JSON schema into BaseModel, including Field definitions, type hints (typing.List, typing.bool), and nested models",
+            "Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: API Interface Documentation",
+            "Input Description: Detailed schema of the target JSON output, including all keys, value types, and nested structures",
+            "Input Example:",
+            "Pydantic definition for completeness_check.sections",
+            "from pydantic import BaseModel, Field",
+            "from typing import bool",
+            "",
+            "class CompletenessSections(BaseModel):",
+            "    info_introduction: bool = Field(..., description=\"Whether the document contains 'Abstract' section\")",
+            "    info_method: bool = Field(..., description=\"Whether the document contains 'Implementation Method' section\")",
+            "    info_dataset: bool = Field(..., description=\"Whether the document contains 'Data Introduction' section\")",
+            "    info_settings: bool = Field(..., description=\"Whether the document contains 'Implementation Configuration' section\")",
+            "    ......"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: DocumentCheckResult Pydantic Model (Python Class)",
+            "Output Description: A Python class that can be directly called by LangChain's with_structured_output to enforce LLM output compliance with JSON"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1-1.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Build and Execute E2E Intelligent Processing Chain",
+      "subsections": [
+        {
+          "title": "Step Definition",
+          "content": [
+            "Use LangChain Expression Language (LCEL) to orchestrate a complete RAG pipeline: Parser -> Chunker -> Retriever -> Prompt -> Base Model -> Structured Output Parser, to automatically process PDF and generate target JSON."
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "Role: Algorithm Engineer",
+            "Skills Required:",
+            "Proficient in LangChain (LCEL), understanding RunnableParallel and RunnablePassthrough",
+            "Familiar with using with_structured_output and able to bind it with Pydantic models.",
+            "Advanced Prompt Engineering capabilities, able to write complex instructions to guide LLM to complete multiple tasks simultaneously (classification, summarization, extraction).",
+            "Number of Roles: 1 person"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "Input Name: PDF File Storage Path, Pydantic Model, LLM Instance",
+            "Input Description: All outputs from steps 1, 2, and 3, plus an initialized LangChain LLM instance (such as a ChatOllama instance pointing to a local Qwen model)."
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "Output Name: Compliant Pydantic Object (serializable to JSON)",
+            "Output Description: Structured data that is 100% schema-compliant, generated by the SOTA RAG pipeline after complete analysis of the input document, ready for API response."
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1.5-2 days"
+          ]
+        }
+      ]
+    }
+  ]
+}

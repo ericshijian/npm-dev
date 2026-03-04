@@ -1,0 +1,200 @@
+{
+  "phases": [
+    {
+      "number": 1,
+      "title": "PHASE 1 Requirements Identification and Team Building",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "- **Business Liaison (x1)**: Familiar with the organization, processes, and decision-making chains of the business work related to this case; skilled in communication; familiar with basic project management operations",
+            "- **Product Manager (x1)**: Typically the product owner of the video recording functionality; skilled in communication; assists the business liaison in technical-level communication",
+            "- **Business-side Technical Liaison (x1)**: Typically the technical lead of the video recording functionality; supports the business liaison in technical-level communication",
+            "- **Algorithm Liaison (x1)**: Familiar with industry-standard technical architectures, processes, construction, and planning related to this business case; skilled in communication; has strong execution capability"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "- Business liaison, product manager, and algorithm liaison conduct initial requirement discussions and brainstorming sessions to identify core requirements of this case",
+            "- Business liaison and algorithm liaison form a working group and communication channel, clarifying the liaisons and contact methods",
+            "- Business liaison, together with the product manager (with support from business-side technical liaison when necessary), clearly describes the content and effect plan of the target video to the algorithm liaison in text format",
+            "- Both parties communicate and supplement other materials needed for requirement confirmation, such as video scripts, copywriting, visual materials, etc.",
+            "- Algorithm liaison conducts requirement assessment based on meeting notes and provided documents and materials from both parties"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "- Mind mapping tools: https://xmind.cn/ or Feishu Docs \"Canvas\" and \"Mind Map\" features",
+            "- Script and copywriting tools: Word, Excel, WPS, etc."
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "- Establish working group, clarify liaisons and contact methods",
+            "- Complete project cooperation requirement form (i.e., target video plan), with preliminary organization of requirements"
+          ]
+        },
+        {
+          "title": "Implementation Cycle",
+          "content": [
+            "1-2 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "PHASE 2 Value Confirmation and Requirement Refinement",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "- **Business Liaison (x1)**: Same as PHASE 1",
+            "- **Business Expert (x1)**: Leader, executor, or expert involved in core business modules related to this case; assists the business liaison in clarifying business pain points and values",
+            "- **Product Manager (x1)**: Same as PHASE 1",
+            "- **Business-side Technical Liaison (x1)**: Same as PHASE 1",
+            "- **Algorithm Liaison (x1)**: Same as PHASE 1"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "- Business liaison communicates with their business experts and related teams to confirm expected goals and business value of this solution implementation; business value should be quantified as much as possible with comparative data (such as current numbers, expected targets, expected improvement compared to current status, etc.)",
+            "- Algorithm liaison communicates with their algorithm experts and related teams to list items pending confirmation, while conducting preliminary research, assessment, and design of the solution",
+            "- Product manager communicates with business liaison and algorithm liaison to clarify requirements, then organizes relevant personnel from both parties to write the preliminary verification requirements document",
+            "- Both parties confirm requirements based on the preliminary verification requirements document, and plan schedule, budget, and resources according to confirmed requirements",
+            "- Repeat the above steps until the preliminary verification requirements document is finalized"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "- Template: [Preliminary Verification Requirements Document Template](https://gvxnc4ekbvn.feishu.cn/wiki/PC8FwObgwiMwVPkM0i4cYkr2nYf?from=from_copylink)"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "- Preliminary verification requirements document: should include clear requirements, planning, and presentation effects of the target video",
+            "- Delivery confirmation items, such as start time, acceptance time, acceptance plan, etc."
+          ]
+        },
+        {
+          "title": "Implementation Cycle",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "PHASE 3 Preliminary Verification and Project Initiation",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "- **Business Liaison (x1)**: Same as PHASE 1",
+            "- **Product Manager (x1)**: Same as PHASE 1",
+            "- **Algorithm Liaison (x1)**: Same as PHASE 1",
+            "- **Algorithm Engineer (x1)**: Proficient in at least one backend programming language (such as Python, etc.); familiar with Docker; proficient in private deployment of common agent platforms (such as Dify, etc.), large model configuration, MCP tool service configuration; has some understanding of frontend operations"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "- Resource preparation and environment configuration",
+            "- Claude Code installation and configuration",
+            "- Build and start ffmpeg-mcp service",
+            "- Build and start funasr-mcp service",
+            "- Build and start paddle-speech-tts-mcp service",
+            "- Build custom MCP service for video compression ratio calculation and start it",
+            "- Configure and start song-generation service to support text-to-instrumental-music generation",
+            "- Start Claude Code to call the MCP services mentioned in the above steps to generate introduction video",
+            "- Algorithm liaison writes preliminary verification report",
+            "- Algorithm liaison completes video production",
+            "- Business liaison and product manager accept the video (first acceptance can serve as PoC)",
+            "- Business liaison, product manager, and algorithm liaison repeat 2-3 rounds of feedback and modification optimization",
+            "- Complete acceptance",
+            "- If planning to officially release the project, both parties closely negotiate, adjust the plan based on demo effects, finalize the project initiation report, and prepare project initiation agreement and launch matters"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "- Claude Code GitHub: https://github.com/anthropics/claude-code",
+            "- mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "- ffmpeg Official: https://www.ffmpeg.org/",
+            "- ffmpeg GitHub: https://github.com/FFmpeg/FFmpeg",
+            "- ffmpeg-python GitHub: https://github.com/kkroening/ffmpeg-python",
+            "- loguru GitHub: https://github.com/Delgan/loguru",
+            "- mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "- funasr GitHub: https://github.com/modelscope/FunASR",
+            "- paddle-speech GitHub: https://github.com/PaddlePaddle/PaddleSpeech",
+            "- SongGeneration GitHub: https://github.com/tencent-ailab/SongGeneration",
+            "- Template: [Preliminary Verification Report Template](https://gvxnc4ekbvn.feishu.cn/wiki/HKZGwXetBije9HklRQmcAe94nZE?from=from_copylink)"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "- Finalized and delivered preliminary verification report",
+            "- Completed video",
+            "- Project initiation report",
+            "- Project initiation agreement (appendix should include delivery, acceptance, schedule, resources, etc. for the official release version)"
+          ]
+        },
+        {
+          "title": "Implementation Cycle",
+          "content": [
+            "2.5-9.5 days"
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "PHASE 4 Official Launch and Optimization Iteration",
+      "subsections": [
+        {
+          "title": "Team Composition",
+          "content": [
+            "Determined according to the project initiation report"
+          ]
+        },
+        {
+          "title": "Implementation Content",
+          "content": [
+            "- Complete official project initiation, determine start time",
+            "- Implement and deliver according to project initiation report content and schedule plan",
+            "- Review and accept according to project initiation report goals and processes",
+            "- Operate and iterate according to project initiation report planning",
+            "- Complete project closure according to project initiation report planning and agreement terms"
+          ]
+        },
+        {
+          "title": "Related Resources",
+          "content": [
+            "/"
+          ]
+        },
+        {
+          "title": "Deliverables",
+          "content": [
+            "- All materials mutually agreed upon by both parties throughout the project lifecycle",
+            "- Officially launched product"
+          ]
+        },
+        {
+          "title": "Implementation Cycle",
+          "content": [
+            "3-6 months (varies depending on specific circumstances)"
+          ]
+        }
+      ]
+    }
+  ]
+}

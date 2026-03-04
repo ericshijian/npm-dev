@@ -1,10 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-import { getArenaContentFromStaticData } from '@/lib/static-data';
+import { getArenaContentFromStaticData, type ArenaContentValue } from '@/lib/static-data';
 
 export interface ContentFile {
   content: string;
   frontmatter?: Record<string, any>;
+}
+
+export interface ArenaContentFile {
+  content: ArenaContentValue;
 }
 
 /**
@@ -91,29 +95,35 @@ export async function getArenaContent(
   arenaId: string,
   pageType: string,
   locale: string
-): Promise<ContentFile | null> {
-  const exportedContent = await getArenaContentFromStaticData(arenaId, pageType, locale);
-  if (exportedContent) {
-    return { content: exportedContent };
-  }
-
-  try {
-    const filePath = path.join(
+): Promise<ArenaContentFile | null> {
+  if (pageType === 'overview' || pageType === 'implementation' || pageType === 'tech-configuration') {
+    const normalizedLocale = locale === 'zh' ? 'zh' : 'en';
+    const tabJsonPath = path.join(
       process.cwd(),
       'Content',
       'Arena',
       'All Arenas',
       arenaId,
-      `${pageType}.${locale}.md`
+      `${pageType}.${normalizedLocale}.json`
     );
-    if (!fs.existsSync(filePath)) {
-      return null;
+
+    if (fs.existsSync(tabJsonPath)) {
+      try {
+        const parsed = JSON.parse(fs.readFileSync(tabJsonPath, 'utf-8')) as ArenaContentValue;
+        if (parsed && typeof parsed === 'object') {
+          return { content: parsed };
+        }
+      } catch (error) {
+        console.error(`[getArenaContent] Failed to parse tab JSON: ${tabJsonPath}`, error);
+      }
     }
-    return { content: fs.readFileSync(filePath, 'utf-8') };
-  } catch (error) {
-    console.error(`Error reading arena content: ${arenaId}/${pageType}.${locale}.md`, error);
-    return null;
   }
+
+  const exportedContent = await getArenaContentFromStaticData(arenaId, pageType, locale);
+  if (exportedContent) {
+    return { content: exportedContent };
+  }
+  return null;
 }
 
 /**

@@ -40,9 +40,18 @@ arena_data.json
 # ide
 .idea/
 
+# log
+logs/
+*.log
+
+# python
+__pycache__/
+*.py[cod]
+.eggs/
+*.egg-info/
+
+# custom
 /run.sh
 /run_pull.sh
 /run_push.sh
 /push.sh
-rwai-arena.sqlite-shm
-rwai-arena.sqlite-wal

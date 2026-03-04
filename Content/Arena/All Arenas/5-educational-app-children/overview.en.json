@@ -1,0 +1,113 @@
+{
+  "highlight": "Build a Children's Educational Fun App Demo in One Week",
+  "industry": "Scientific Research & Education, Culture & Sports",
+  "category": "Service",
+  "tech_category": "Natural Language Processing, Text Generation, Intelligent Q&A",
+  "cycle": "Demo Build: Within One Week",
+  "case_no": "Case251031Y01",
+  "sections": [
+    {
+      "title": "1. Business Highlights",
+      "subsections": [
+        {
+          "title": "Highlights",
+          "content": [
+            "- Build a children's educational app demo in one week"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. Basic Information",
+      "subsections": [
+        {
+          "title": "Overview",
+          "content": [
+            "- Rapidly build a children's intellectual enlightenment fun application (using brain teasers as an example). Generate unconventional thinking and logical reasoning questions of different types through AI technology."
+          ]
+        },
+        {
+          "title": "Classification Tags",
+          "content": [
+            "- Industry: Scientific Research & Education, Culture & Sports",
+            "- Application: Service",
+            "- Technology: Natural Language Processing, Text Generation, Intelligent Q&A"
+          ]
+        },
+        {
+          "title": "Implementation Cycle",
+          "content": [
+            "- Demo Build: Within one week"
+          ]
+        },
+        {
+          "title": "Team Composition",
+          "content": [
+            "- Demo Stage: 1 Business Expert, 1 Algorithm Expert"
+          ]
+        },
+        {
+          "title": "Business Pain Points",
+          "content": [
+            "- Traditional manual education typically integrates such Q&A into game processes, preventing independent experience and lacking flexibility",
+            "- Manual education makes it difficult for similar Q&A services to reach a broader potential user base",
+            "- Non-technical personnel with educational Q&A experience and knowledge struggle to develop such applications"
+          ]
+        },
+        {
+          "title": "Core Functions",
+          "content": [
+            "- Interaction Support:",
+            "  - Change questions (maintain freshness)",
+            "  - Multiple guesses (encourage attempts)",
+            "  - Ask for answers (immediate feedback)",
+            "  - Challenge questions (cultivate critical thinking)",
+            "- Build a complete intellectual training experience"
+          ]
+        },
+        {
+          "title": "Core Business Metrics",
+          "content": [
+            "- Q&A response latency under 1 second",
+            "- Support up to 5 rounds of continuous interaction with users"
+          ]
+        },
+        {
+          "title": "Core Technical Metrics",
+          "content": [
+            "- Single-round average answer accuracy reaches 90%"
+          ]
+        },
+        {
+          "title": "Other Value Returns",
+          "content": [
+            "- Can serve as the first workflow practice project for LLM enthusiasts",
+            "- Provides a zero-barrier solution for parents in need to build their own fun applications"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. Best Practice Version",
+      "subsections": [
+        {
+          "title": "3.1 Private Deployment - Server Deployment Version",
+          "content": [
+            "- Reason for Best Practice Selection: This version has the most complete workflow, simplest setup process, and shortest build time among current open-source solutions. Built on the BISHENG workflow platform, it enables no-code construction of Q&A large models by following step-by-step configuration.",
+            "- Practitioner Information: Real-World AI Repost and Verification",
+            "- Original Author Information: zh",
+            "- Author Website: Hand-craft 100 Workflows [Event] (Last row of the table, author is zh)",
+            "- Related References:",
+            "  - BISHENG(by Bisheng) GitHub: https://github.com/dataelement/bisheng",
+            "  - GLM-4.7(by Zhipu) GitHub: https://github.com/zai-org/GLM-4.5",
+            "- Version Status:",
+            "  - Initial Release Date: 2024-12-xx",
+            "  - Last Updated: 2026-02-02",
+            "  - Last Reviewed: 2026-02-02",
+            "- Implementation Details: https://gvxnc4ekbvn.feishu.cn/wiki/J4ucwrsuJiWRuWkffSpcly50n7d?from=from_copylink"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -34,6 +34,53 @@ import 'highlight.js/styles/github-dark.css';
 import { motion } from 'framer-motion';
 
 type TabType = 'overview' | 'implementation' | 'tech-configuration';
+type TechConfigurationSubsection = {
+  title: string;
+  content: string[];
+};
+type TechConfigurationStep = {
+  number: number;
+  title: string;
+  subsections: TechConfigurationSubsection[];
+};
+type TechConfigurationPayload = {
+  markdown?: string;
+  steps?: TechConfigurationStep[];
+  [key: string]: unknown;
+};
+type OverviewSubsection = {
+  title?: string;
+  content: string[];
+};
+type OverviewSection = {
+  title: string;
+  subsections: OverviewSubsection[];
+};
+type OverviewPayload = {
+  highlight?: string;
+  industry?: string;
+  category?: string;
+  cycle?: string;
+  case_no?: string;
+  sections?: OverviewSection[];
+  markdown?: string;
+  [key: string]: unknown;
+};
+type ImplementationSubsection = {
+  title: string;
+  content: string[];
+};
+type ImplementationPhase = {
+  number: number;
+  title: string;
+  subsections: ImplementationSubsection[];
+};
+type ImplementationPayload = {
+  phases?: ImplementationPhase[];
+  markdown?: string;
+  [key: string]: unknown;
+};
+type ArenaTabContent = string | TechConfigurationPayload | OverviewPayload | ImplementationPayload;
 
 // Metric value to star rating
 const metricToStars: Record<string, number> = {
@@ -115,11 +162,69 @@ interface ArenaDetailClientProps {
   arena: Arena;
   locale: string;
   arenaId: string;
-  initialContent: { [key: string]: string };
+  initialContent: { [key: string]: ArenaTabContent };
   hasContent: boolean;
 }
 
-export function ArenaDetailClient({ arena, locale, arenaId, initialContent, hasContent }: ArenaDetailClientProps) {
+function ContentUploadingPlaceholder({ locale }: { locale: string }) {
+  return (
+    <div className="text-center py-20">
+      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 mb-6">
+        <Settings className="h-10 w-10 text-blue-500" />
+      </div>
+      <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        {locale === 'zh' ? '内容上传中' : 'Content Uploading'}
+      </h2>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        {locale === 'zh'
+          ? '我们正在为这个AI实践案例准备详细的内容文档，包括实施指南、需求文档、验证报告等。敬请期待！'
+          : 'We are preparing detailed content documentation for this AI practice case, including implementation guides and more. Stay tuned!'
+        }
+      </p>
+    </div>
+  );
+}
+
+function isTabContentReady(content?: ArenaTabContent): boolean {
+  if (!content) return false;
+
+  if (typeof content === 'object') {
+    // Check for tech-configuration steps
+    const steps = Array.isArray(content.steps) ? content.steps : [];
+    if (steps.length > 0) return true;
+    // Check for overview sections
+    const sections = Array.isArray(content.sections) ? content.sections : [];
+    if (sections.length > 0) return true;
+    // Check for implementation phases
+    const phases = Array.isArray(content.phases) ? content.phases : [];
+    if (phases.length > 0) return true;
+    // Check for markdown fallback
+    const markdown = typeof content.markdown === 'string' ? content.markdown : '';
+    return markdown.trim().length > 0;
+  }
+
+  const normalized = content.replace(/\s+/g, ' ').trim();
+  if (!normalized) return false;
+
+  const placeholderPatterns = [
+    /待补充/,
+    /内容上传中/,
+    /敬请期待/,
+    /coming soon/i,
+    /stay tuned/i,
+    /\bto be added\b/i,
+    /\btbd\b/i,
+  ];
+
+  // Short placeholder templates should be treated as empty content.
+  if (normalized.length <= 500 && placeholderPatterns.some((pattern) => pattern.test(normalized))) {
+    return false;
+  }
+
+  return true;
+}
+
+export function ArenaDetailClient({ arena, locale, arenaId: _arenaId, initialContent, hasContent }: ArenaDetailClientProps) {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const content = initialContent;
   const isChina = locale === 'zh';
@@ -127,6 +232,24 @@ export function ArenaDetailClient({ arena, locale, arenaId, initialContent, hasC
   const withBasePath = (path: string) => `${basePath}${path}`;
   const hasArenaSnapshot =
     Boolean(arena.highlights || arena.highlightsEn || arena.champion || arena.championEn || arena.industry || arena.industryEn);
+  const readMarkdown = (tabContent?: ArenaTabContent): string => {
+    if (!tabContent) return '';
+    if (typeof tabContent === 'string') return tabContent;
+    return typeof tabContent.markdown === 'string' ? tabContent.markdown : '';
+  };
+
+  const renderActiveTabContent = () => {
+    if (activeTab === 'overview' && isTabContentReady(content.overview)) {
+      return <OverviewSection content={content.overview} locale={locale} activeTab={activeTab} setActiveTab={(tab) => setActiveTab(tab as TabType)} />;
+    }
+    if (activeTab === 'implementation' && isTabContentReady(content.implementation)) {
+      return <ImplementationSection content={content.implementation!} locale={locale} />;
+    }
+    if (activeTab === 'tech-configuration' && isTabContentReady(content['tech-configuration'])) {
+      return <TechConfigurationSection content={content['tech-configuration']} locale={locale} />;
+    }
+    return <ContentUploadingPlaceholder locale={locale} />;
+  };
 
   // Handle URL hash for direct tab linking
   useEffect(() => {
@@ -354,12 +477,12 @@ export function ArenaDetailClient({ arena, locale, arenaId, initialContent, hasC
             <div className="max-w-5xl mx-auto py-6">
               <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-indigo-50/60 p-6 sm:p-8 mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {isChina ? '数据库已加载基础信息' : 'Base Data Loaded from Database'}
+                  {isChina ? '已加载基础信息' : 'Base Data Available'}
                 </h2>
                 <p className="text-gray-600">
                   {isChina
-                    ? '该擂台暂未录入完整章节内容，当前先展示数据库中的基础信息。'
-                    : 'Full tab content is not available yet. Showing base fields currently loaded from SQLite.'}
+                    ? '该擂台暂未录入完整章节内容，当前先展示已导出的基础信息。'
+                    : 'Full tab content is not available yet. Showing currently exported base fields.'}
                 </p>
               </div>
 
@@ -403,20 +526,7 @@ export function ArenaDetailClient({ arena, locale, arenaId, initialContent, hasC
             </div>
           ) : (
             // Fallback only when DB also has no usable base fields
-            <div className="text-center py-20">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-50 mb-6">
-                <Settings className="h-10 w-10 text-blue-500" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {locale === 'zh' ? '内容上传中' : 'Content Uploading'}
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {locale === 'zh'
-                  ? '我们正在为这个AI实践案例准备详细的内容文档，包括实施指南、需求文档、验证报告等。敬请期待！'
-                  : 'We are preparing detailed content documentation for this AI practice case, including implementation guides and more. Stay tuned!'
-                }
-              </p>
-            </div>
+            <ContentUploadingPlaceholder locale={locale} />
           )
         ) : (
           <div className="grid grid-cols-1 gap-8">
@@ -428,17 +538,7 @@ export function ArenaDetailClient({ arena, locale, arenaId, initialContent, hasC
               transition={{ duration: 0.3 }}
             >
               <div className="prose prose-lg max-w-none">
-                {activeTab === 'overview' && content.overview && (
-                  <OverviewSection content={content.overview} locale={locale} activeTab={activeTab} setActiveTab={(tab) => setActiveTab(tab as TabType)} />
-                )}
-
-                {activeTab === 'implementation' && content.implementation && (
-                  <ImplementationSection content={content.implementation} locale={locale} />
-                )}
-
-                {activeTab === 'tech-configuration' && content['tech-configuration'] && (
-                  <TechConfigurationSection content={content['tech-configuration']} locale={locale} />
-                )}
+                {renderActiveTabContent()}
               </div>
             </motion.div>
           </div>
@@ -567,7 +667,7 @@ const markdownComponents = {
 
 // Overview Section Component - Original Card-based design
 function OverviewSection({ content, locale, activeTab, setActiveTab }: {
-  content: string;
+  content: ArenaTabContent;
   locale: string;
   activeTab: string;
   setActiveTab: (tab: string) => void;
@@ -588,8 +688,50 @@ function OverviewSection({ content, locale, activeTab, setActiveTab }: {
     return '📄';
   };
 
-  // Parse overview content into structured sections
-  const parseContent = (text: string) => {
+  // Normalize structured sections from JSON
+  const normalizeStructuredSections = (rawSections: unknown): Array<{
+    title: string;
+    icon: string;
+    subsections: Array<{
+      title?: string;
+      icon?: string;
+      content: string[];
+    }>;
+  }> => {
+    if (!Array.isArray(rawSections)) return [];
+
+    return rawSections
+      .map((section) => {
+        const sectionObj = (section && typeof section === 'object') ? (section as Record<string, unknown>) : null;
+        const title = typeof sectionObj?.title === 'string' && sectionObj.title.trim() ? sectionObj.title.trim() : '';
+        if (!title) return null;
+
+        const rawSubsections = Array.isArray(sectionObj?.subsections) ? sectionObj.subsections : [];
+        const subsections = rawSubsections
+          .map((sub) => {
+            const subObj = (sub && typeof sub === 'object') ? (sub as Record<string, unknown>) : null;
+            const subTitle = typeof subObj?.title === 'string' ? subObj.title.trim() : undefined;
+            const subContent = Array.isArray(subObj?.content)
+              ? subObj.content.filter((item): item is string => typeof item === 'string')
+              : [];
+            return {
+              title: subTitle,
+              content: subContent,
+            };
+          })
+          .filter((item): item is NonNullable<typeof item> => item !== null);
+
+        return {
+          title,
+          icon: getSectionIcon(title),
+          subsections,
+        };
+      })
+      .filter((item): item is NonNullable<typeof item> => item !== null);
+  };
+
+  // Parse overview content into structured sections (fallback for markdown)
+  const parseContentFromMarkdown = (text: string) => {
     const lines = text.split('\n');
     const sections: {
       title: string;
@@ -672,7 +814,23 @@ function OverviewSection({ content, locale, activeTab, setActiveTab }: {
     return sections;
   };
 
-  const sections = parseContent(content);
+  // Extract sections from structured data or fallback to markdown parsing
+  const sections = (() => {
+    if (typeof content === 'object' && content !== null) {
+      const overviewContent = content as OverviewPayload;
+      const structured = normalizeStructuredSections(overviewContent.sections);
+      if (structured.length > 0) {
+        return structured;
+      }
+      const markdown = typeof overviewContent.markdown === 'string' ? overviewContent.markdown : '';
+      if (markdown.trim()) {
+        return parseContentFromMarkdown(markdown);
+      }
+      return [];
+    }
+    // Fallback for string content (legacy)
+    return parseContentFromMarkdown(content as string);
+  })();
 
   // Render Business Highlights with EXTRA emphasis
   const renderBusinessHighlightsCard = (section: typeof sections[0]) => {
@@ -1500,7 +1658,7 @@ function OverviewSection({ content, locale, activeTab, setActiveTab }: {
 }
 
 // Implementation Section Component - Phase-based card design
-function ImplementationSection({ content, locale }: { content: string; locale: string }) {
+function ImplementationSection({ content, locale }: { content: ArenaTabContent; locale: string }) {
   const isChina = locale === 'zh';
 
   // Icon mapping for phases
@@ -1521,22 +1679,43 @@ function ImplementationSection({ content, locale }: { content: string; locale: s
     return '📄';
   };
 
-  // Parse implementation content into phases
-  const parseContent = (text: string) => {
-    const lines = text.split('\n');
-    const phases: {
-      number: number;
+  // Phase type for internal use
+  type PhaseType = {
+    number: number;
+    title: string;
+    icon: string;
+    subsections: Array<{
       title: string;
       icon: string;
-      subsections: Array<{
-        title: string;
-        icon: string;
-        content: string[];
-      }>;
-    }[] = [];
+      content: string[];
+    }>;
+  };
 
-    let currentPhase: typeof phases[0] | null = null;
-    let currentSubsection: typeof phases[0]['subsections'][0] | null = null;
+  // Parse implementation content into phases (supports both JSON phases and markdown format)
+  const parseContent = (tabContent: ArenaTabContent): PhaseType[] => {
+    // If content is already in JSON phases format
+    if (typeof tabContent === 'object' && Array.isArray(tabContent.phases)) {
+      return tabContent.phases.map((phase) => ({
+        number: phase.number,
+        title: phase.title,
+        icon: getPhaseIcon(phase.number),
+        subsections: phase.subsections.map((sub: ImplementationSubsection) => ({
+          title: sub.title,
+          icon: getSubsectionIcon(sub.title),
+          content: sub.content,
+        })),
+      }));
+    }
+
+    // Fallback: parse markdown format
+    const text = typeof tabContent === 'string' ? tabContent : (typeof tabContent === 'object' && tabContent.markdown) ? tabContent.markdown : '';
+    if (!text) return [];
+
+    const lines = text.split('\n');
+    const phases: PhaseType[] = [];
+
+    let currentPhase: PhaseType | null = null;
+    let currentSubsection: PhaseType['subsections'][0] | null = null;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
@@ -1641,13 +1820,13 @@ function ImplementationSection({ content, locale }: { content: string; locale: s
                 <div className="space-y-3">
                   {subsection.content.map((item, itemIdx) => {
                     // List items
-                    if (item.match(/^\d+\./) || item.startsWith('-')) {
+                    if (/^\d+\.\s+/.test(item) || item.startsWith('-')) {
                       return (
                         <div key={itemIdx} className="flex items-start gap-3 text-gray-700">
                           <span className="text-violet-600 flex-shrink-0 mt-1">
-                            {item.match(/^\d+\./) ? '➢' : '•'}
+                            {/^\d+\.\s+/.test(item) ? '➢' : '•'}
                           </span>
-                          <span className="leading-relaxed">{item.replace(/^\d+\.\s*/, '').replace(/^-\s*/, '').replace(/\*\*/g, '')}</span>
+                          <span className="leading-relaxed">{item.replace(/^\d+\.\s+/, '').replace(/^-\s*/, '').replace(/\*\*/g, '')}</span>
                         </div>
                       );
                     }
@@ -1708,7 +1887,7 @@ function ImplementationSection({ content, locale }: { content: string; locale: s
 }
 
 // TechConfigurationSection Component - Step-based card design for technical configuration
-function TechConfigurationSection({ content, locale }: { content: string; locale: string }) {
+function TechConfigurationSection({ content, locale }: { content: ArenaTabContent; locale: string }) {
   const isChina = locale === 'zh';
 
   // Icon mapping for steps
@@ -1729,8 +1908,16 @@ function TechConfigurationSection({ content, locale }: { content: string; locale
     return '📄';
   };
 
-  // Parse technical configuration content into steps
-  const parseContent = (text: string) => {
+  const parseContentFromMarkdown = (text: string): Array<{
+    number: number;
+    title: string;
+    icon: string;
+    subsections: Array<{
+      title: string;
+      icon: string;
+      content: string[];
+    }>;
+  }> => {
     const lines = text.split('\n');
     const steps: {
       number: number;
@@ -1746,6 +1933,13 @@ function TechConfigurationSection({ content, locale }: { content: string; locale
     let currentStep: typeof steps[0] | null = null;
     let currentSubsection: typeof steps[0]['subsections'][0] | null = null;
     let inContentSection = false;
+    const hasExplicitHeader = lines.some((line) => {
+      const trimmed = line.trim();
+      return trimmed.startsWith('####') || trimmed.startsWith('# ');
+    });
+    if (!hasExplicitHeader) {
+      inContentSection = true;
+    }
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
@@ -1850,7 +2044,67 @@ function TechConfigurationSection({ content, locale }: { content: string; locale
     return steps;
   };
 
-  const steps = parseContent(content);
+  const normalizeStructuredSteps = (input: unknown) => {
+    if (!Array.isArray(input)) return [] as Array<{
+      number: number;
+      title: string;
+      icon: string;
+      subsections: Array<{
+        title: string;
+        icon: string;
+        content: string[];
+      }>;
+    }>;
+
+    return input
+      .map((step, index) => {
+        const stepObj = (step && typeof step === 'object') ? (step as Record<string, unknown>) : null;
+        const number = typeof stepObj?.number === 'number' && Number.isFinite(stepObj.number)
+          ? stepObj.number
+          : index + 1;
+        const title = typeof stepObj?.title === 'string' && stepObj.title.trim()
+          ? stepObj.title.trim()
+          : `Step ${number}`;
+        const rawSubsections = Array.isArray(stepObj?.subsections) ? stepObj.subsections : [];
+        const subsections = rawSubsections
+          .map((sub) => {
+            const subObj = (sub && typeof sub === 'object') ? (sub as Record<string, unknown>) : null;
+            const subTitle = typeof subObj?.title === 'string' && subObj.title.trim() ? subObj.title.trim() : '';
+            if (!subTitle) return null;
+            const subContent = Array.isArray(subObj?.content)
+              ? subObj.content.filter((item): item is string => typeof item === 'string')
+              : [];
+            return {
+              title: subTitle,
+              icon: getSubsectionIcon(subTitle),
+              content: subContent,
+            };
+          })
+          .filter((item): item is NonNullable<typeof item> => item !== null);
+
+        return {
+          number,
+          title,
+          icon: getStepIcon(number),
+          subsections,
+        };
+      });
+  };
+
+  const steps = (() => {
+    if (typeof content === 'object') {
+      const structured = normalizeStructuredSteps(content.steps);
+      if (structured.length > 0) {
+        return structured;
+      }
+      const markdown = typeof content.markdown === 'string' ? content.markdown : '';
+      if (markdown.trim()) {
+        return parseContentFromMarkdown(markdown);
+      }
+      return [];
+    }
+    return parseContentFromMarkdown(content);
+  })();
 
   // Render step card
   const renderStepCard = (step: typeof steps[0], idx: number) => {
@@ -1938,7 +2192,7 @@ function TechConfigurationSection({ content, locale }: { content: string; locale
                       }
 
                       // Determine content type
-                      const isListItem = trimmed.match(/^\d+\./) || trimmed.startsWith('-');
+                      const isListItem = /^\d+\.\s+/.test(trimmed) || trimmed.startsWith('-');
                       const isLink = trimmed.includes('[') && trimmed.includes('](');
 
                       if (isListItem) {
@@ -1994,10 +2248,10 @@ function TechConfigurationSection({ content, locale }: { content: string; locale
                             {block.content.map((item, itemIdx) => (
                               <div key={itemIdx} className="flex items-start gap-3">
                                 <span className="text-gray-600 flex-shrink-0 mt-1">
-                                  {item.match(/^\d+\./) ? '➢' : '•'}
+                                  {/^\d+\.\s+/.test(item) ? '➢' : '•'}
                                 </span>
                                 <span className="leading-relaxed flex-1">
-                                  {item.replace(/^\d+\.\s*/, '').replace(/^-\s*/, '')}
+                                  {item.replace(/^\d+\.\s+/, '').replace(/^-\s*/, '')}
                                 </span>
                               </div>
                             ))}
