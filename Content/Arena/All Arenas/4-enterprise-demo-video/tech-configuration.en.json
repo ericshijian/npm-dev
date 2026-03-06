@@ -4,88 +4,534 @@
       "number": 1,
       "title": "Resource Preparation and Environment Configuration",
       "subsections": [
-        {"title": "Step Definition", "content": ["Acquire and preprocess open-source models and evaluation datasets, complete the software and hardware environment configuration required for the proposed solution"]},
-        {"title": "Participants", "content": ["Role Name: Algorithm Engineer", "Skill Requirements:", "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights", "Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5", "Proficient in Python, capable of using basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)", "Proactive attitude, organized communication, curiosity and self-drive", "Role Count: 1 person"]},
-        {"title": "Step Input", "content": ["Input Name: Environment Configuration Required Resources", "Input Introduction:", "Check whether the hardware of the running environment meets the following requirements: GPU preferably NVIDIA A10 or above (optional), GPU memory >= 16GB (optional), CPU >= 8 cores, memory >= 16GB, operating system Linux (Ubuntu 20.04+).", "Input Example:", "Please list a checklist for self-inspection:", "NVIDIA A10 or above (optional)", "GPU memory >= 16GB (optional)", "CPU >= 8 cores", "Memory >= 16GB"]},
-        {"title": "Step Output", "content": ["Output Name: Environment Configuration Required Resources Ready", "Output Introduction: Server has been configured with GPU driver (optional), Python environment, Node environment, meeting the hardware and system requirements for model deployment"]},
-        {"title": "Estimated Time", "content": ["1-2 days"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Acquire and preprocess open-source models and evaluation datasets, complete the software and hardware environment configuration required for the proposed solution"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: Resources required for environment configuration",
+            "- Input Description:",
+            "Check whether the hardware of the running environment meets the following requirements: GPU preferably NVIDIA A10 or above (optional), GPU with VRAM ≥ 16GB (optional), CPU ≥ 8 cores, RAM ≥ 16GB, operating system Linux (Ubuntu 20.04+).",
+            "- Input Example:",
+            "Please list a checklist for self-inspection:",
+            "NVIDIA A10 or above (optional)",
+            "GPU with VRAM ≥ 16GB (optional)",
+            "CPU ≥ 8 cores",
+            "RAM ≥ 16GB"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Environment configuration resources ready",
+            "- Output Description: Server configured with GPU driver (optional), Python environment, Node environment, meeting hardware and system requirements for model deployment"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1-2 days"
+          ]
+        }
       ]
     },
     {
       "number": 2,
       "title": "Claude Code Installation and Configuration",
       "subsections": [
-        {"title": "Step Definition", "content": ["Install and configure Claude Code through Node"]},
-        {"title": "Participants", "content": ["Role Name: Frontend Engineer/Backend/Algorithm Engineer", "Skill Requirements: Familiar with Node", "Role Count: 1"]},
-        {"title": "Step Input", "content": ["Input Name: Install and Configure Claude Code", "Input Introduction: Install and configure Claude Code based on Node environment", "Input Example:", "Related commands are as follows:", "npm install -g @anthropic-ai/claude-code", "Configure environment variables (take ~/.bashrc as an example)", "Configure models (~/.claude/settings.json)", "Startup confirmation command, enter 'claude' to access command line, if you receive corresponding replies after entering any text without errors, the configuration is complete", "Resource Links:", "Claude Code GitHub: https://github.com/anthropics/claude-code"]},
-        {"title": "Step Output", "content": ["Output Name: Available Claude Code Service", "Output Introduction: Automatically call relevant MCP services through Claude Code to complete enterprise-level introduction video production"]},
-        {"title": "Estimated Time", "content": ["0.5-1 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Install and configure Claude Code via Node"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Frontend Engineer/Backend/Algorithm Engineer",
+            "- Skill Requirements: Familiar with Node",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: Install and Configure Claude Code",
+            "- Input Description: Install and configure Claude Code based on Node environment",
+            "- Input Example:",
+            "Related commands:",
+            "```bash",
+            "# Install Claude Code",
+            "npm install -g @anthropic-ai/claude-code",
+            "",
+            "# Configure environment variables (using ~/.bashrc as example, similar for ~/.zshrc, etc.)",
+            "echo 'export ANTHROPIC_BASE_URL=\"YOUR_BASE_URL\"' >> ~/.bashrc",
+            "echo 'export ANTHROPIC_AUTH_TOKEN=\"YOUR_AUTH_TOKEN\"' >> ~/.bashrc",
+            "",
+            "# Configure model",
+            "vim ~/.claude/settings.json",
+            "{",
+            "  \"env\": {",
+            "    \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"YOUR_HAIKU_MODEL\",",
+            "    \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"YOUR_SONNET_MODEL\",",
+            "    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"YOUR_OPUS_MODEL\"",
+            "  }",
+            "}",
+            "",
+            "# Start confirmation command, enter 'claude' to launch CLI. Configuration is complete when you receive corresponding responses without errors after inputting any text",
+            "claude",
+            "> your_input",
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Available Claude Code Service",
+            "- Output Description: Automatically invoke related MCP services through Claude Code to complete enterprise-level demo video production"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
       ]
     },
     {
       "number": 3,
-      "title": "ffmpeg-mcp Service Build and Startup",
+      "title": "ffmpeg-mcp Service Build and Start",
       "subsections": [
-        {"title": "Step Definition", "content": ["Build ffmpeg-mcp service, supporting video compression, multi-track video burning, audio/video file extraction and other scenario video editing operations"]},
-        {"title": "Participants", "content": ["Role Name: Backend/Algorithm Engineer", "Skill Requirements: Familiar with Linux common commands, shell, ffmpeg and Python", "Role Count: 1"]},
-        {"title": "Step Input", "content": ["Input Name: ffmpeg-mcp Service Build and Startup", "Input Introduction: Install and start relevant MCP services by installing related Python dependencies", "Input Example:", "System-level ffmpeg installation (taking Ubuntu as an example): sudo apt update && sudo apt install ffmpeg", "requirements.txt contains: loguru>=0.7.0, python-dotenv>=1.0.0, mcp>=1.0.0, ffmpeg-python>=0.2.0", "Python code implements FastMCP service, providing tools such as video duration retrieval, audio extraction, video stream extraction, video duration compression, audio duration retrieval, silence audio generation, multi-track video creation", "Startup command: python server.py", "Resource Links:", "mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk", "ffmpeg Official: https://www.ffmpeg.org/", "ffmpeg GitHub: https://github.com/FFmpeg/FFmpeg", "ffmpeg-python GitHub: https://github.com/kkroening/ffmpeg-python", "loguru GitHub: https://github.com/Delgan/loguru"]},
-        {"title": "Step Output", "content": ["Output Name: Callable ffmpeg-mcp Service", "Output Introduction: Build and start SSE protocol ffmpeg-mcp service"]},
-        {"title": "Estimated Time", "content": ["0.5-1 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Build ffmpeg-mcp service to support video compression, multi-track video burning, audio/video file extraction and other video editing operations"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Backend/Algorithm Engineer",
+            "- Skill Requirements: Familiar with Linux common commands, shell, ffmpeg and Python",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: ffmpeg-mcp Service Build and Start",
+            "- Input Description: Install and start related MCP services by installing Python dependencies",
+            "- Input Example:",
+            "Install ffmpeg at system level (using Ubuntu as example):",
+            "```bash",
+            "# Install",
+            "sudo apt update",
+            "sudo apt install ffmpeg",
+            "",
+            "# Verify",
+            "ffmpeg -version",
+            "",
+            "Note: Can also be installed via Homebrew",
+            "```",
+            "requirements.txt as follows:",
+            "```bash",
+            "# Recommended Python 3.10 or above, such as Python 3.11",
+            "",
+            "# Core dependencies",
+            "loguru>=0.7.0",
+            "python-dotenv>=1.0.0",
+            "mcp>=1.0.0",
+            "",
+            "# FFmpeg related dependencies",
+            "ffmpeg-python>=0.2.0",
+            "",
+            "# Note: Install via pip install -r requirements.txt",
+            "```",
+            "Python code is as follows (see source file for complete code):",
+            "- Resource Links:",
+            "1. mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "2. ffmpeg Official: https://www.ffmpeg.org/",
+            "3. ffmpeg GitHub: https://github.com/FFmpeg/FFmpeg",
+            "4. ffmpeg-python GitHub: https://github.com/kkroening/ffmpeg-python",
+            "5. loguru GitHub: https://github.com/Delgan/loguru"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Callable ffmpeg-mcp Service",
+            "- Output Description: Build and start SSE protocol ffmpeg-mcp service"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
       ]
     },
     {
       "number": 4,
-      "title": "funasr-mcp Service Build and Startup",
+      "title": "funasr-mcp Service Build and Start",
       "subsections": [
-        {"title": "Step Definition", "content": ["Build funasr-mcp service, supporting speech recognition, converting audio files in wav and other formats to standard srt subtitle files"]},
-        {"title": "Participants", "content": ["Role Name: Algorithm Engineer", "Skill Requirements:", "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights", "Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5", "Proficient in Python, capable of using basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)", "Proactive attitude, organized communication, curiosity and self-drive", "Role Count: 1 person"]},
-        {"title": "Step Input", "content": ["Input Name: funasr-mcp Service Build and Startup", "Input Introduction: Install and start relevant MCP services by installing related Python dependencies", "Input Example:", "requirements.txt contains: loguru>=0.7.0, python-dotenv>=1.0.0, mcp>=1.0.0, torch, torchaudio, funasr, modelscope", "Python code implements FastMCP service, using FunASR AutoModel (paraformer-zh, fsmn-vad, ct-punc-c, cam++) to provide audio2srt_text tool", "Startup command: python server.py", "Resource Links:", "mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk", "funasr GitHub: https://github.com/modelscope/FunASR", "loguru GitHub: https://github.com/Delgan/loguru"]},
-        {"title": "Step Output", "content": ["Output Name: Callable funasr-mcp Service", "Output Introduction: Build and start SSE protocol funasr-mcp service"]},
-        {"title": "Estimated Time", "content": ["0.5-1 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Build funasr-mcp service to support speech recognition, transcribing audio files in wav and other formats to standard srt subtitle files"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: funasr-mcp Service Build and Start",
+            "- Input Description: Install and start related MCP services by installing Python dependencies",
+            "- Input Example:",
+            "requirements.txt as follows:",
+            "```bash",
+            "# Recommended Python 3.10 or above, such as Python 3.10",
+            "",
+            "# Core dependencies",
+            "loguru>=0.7.0",
+            "python-dotenv>=1.0.0",
+            "mcp>=1.0.0",
+            "",
+            "# FunASR related dependencies",
+            "torch",
+            "torchaudio",
+            "funasr",
+            "modelscope",
+            "",
+            "# Note: Install via pip install -r requirements.txt, torch and torchaudio can be installed following https://pytorch.org/get-started/locally",
+            "```",
+            "Python code is as follows (see source file for complete code):",
+            "- Resource Links:",
+            "1. mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "2. funasr GitHub: https://github.com/modelscope/FunASR",
+            "3. loguru GitHub: https://github.com/Delgan/loguru"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Callable funasr-mcp Service",
+            "- Output Description: Build and start SSE protocol funasr-mcp service"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
       ]
     },
     {
       "number": 5,
-      "title": "paddle-speech-tts-mcp Service Build and Startup",
+      "title": "paddle-speech-tts-mcp Service Build and Start",
       "subsections": [
-        {"title": "Step Definition", "content": ["Build paddle-speech-tts-mcp service, supporting TTS, converting text to audio files"]},
-        {"title": "Participants", "content": ["Role Name: Algorithm Engineer", "Skill Requirements:", "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights", "Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5", "Proficient in Python, capable of using basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)", "Proactive attitude, organized communication, curiosity and self-drive", "Role Count: 1 person"]},
-        {"title": "Step Input", "content": ["Input Name: paddle-speech-tts-mcp Service Build and Startup", "Input Introduction: Install and start relevant MCP services by installing related Python dependencies", "Input Example:", "requirements.txt contains: loguru>=0.7.0, python-dotenv>=1.0.0, mcp>=1.0.0, paddlepaddle, pytest-runner, paddlespeech", "Python code implements FastMCP service, using PaddleSpeech TTSExecutor to provide text_to_speech tool", "Startup command: python server.py", "Resource Links:", "mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk", "paddle-speech GitHub: https://github.com/PaddlePaddle/PaddleSpeech", "loguru GitHub: https://github.com/Delgan/loguru"]},
-        {"title": "Step Output", "content": ["Output Name: Callable paddle-speech-tts-mcp Service", "Output Introduction: Build and start SSE protocol paddle-speech-tts-mcp service"]},
-        {"title": "Estimated Time", "content": ["0.5-1 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Build paddle-speech-tts-mcp service to support TTS, converting text to audio files"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: paddle-speech-tts-mcp Service Build and Start",
+            "- Input Description: Install and start related MCP services by installing Python dependencies",
+            "- Input Example:",
+            "requirements.txt as follows:",
+            "```bash",
+            "# Recommended Python 3.10 or above, such as Python 3.11",
+            "",
+            "# Core dependencies",
+            "loguru>=0.7.0",
+            "python-dotenv>=1.0.0",
+            "mcp>=1.0.0",
+            "",
+            "# PaddleSpeech related dependencies",
+            "paddlepaddle",
+            "pytest-runner",
+            "paddlespeech",
+            "",
+            "# Note: Install via pip install -r requirements.txt, paddlepaddle can be installed following https://www.paddlepaddle.org.cn/install/quick",
+            "```",
+            "Python code is as follows (see source file for complete code):",
+            "- Resource Links:",
+            "1. mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "2. paddle-speech GitHub: https://github.com/PaddlePaddle/PaddleSpeech",
+            "3. loguru GitHub: https://github.com/Delgan/loguru"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Callable paddle-speech-tts-mcp Service",
+            "- Output Description: Build and start SSE protocol paddle-speech-tts-mcp service"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
       ]
     },
     {
       "number": 6,
-      "title": "Video Compression Ratio Calculator MCP Service Build and Startup",
+      "title": "Video Compression Ratio Calculator MCP Service Build and Start",
       "subsections": [
-        {"title": "Step Definition", "content": ["Build custom MCP service for video compression ratio calculation (denoted as cus-tool-video_compression_calculator), used to calculate the compression duration allocation of multiple videos, ensuring that the total duration after compression does not exceed the target duration"]},
-        {"title": "Participants", "content": ["Role Name: Backend/Algorithm Engineer", "Skill Requirements: Familiar with Python", "Role Count: 1"]},
-        {"title": "Step Input", "content": ["Input Name: Video Compression Ratio Calculator MCP Service Build and Startup", "Input Introduction: Install and start relevant MCP services by installing related Python dependencies", "Input Example:", "requirements.txt contains: loguru>=0.7.0, python-dotenv>=1.0.0, mcp>=1.0.0", "Python code implements FastMCP service, providing video_compression_calculator tool, core algorithm: try uniform compression ratio, if key video exceeds range, fix it at the boundary, strictly allocate remaining time to other videos to ensure sum = count_target", "Startup command: python server.py", "Resource Links:", "mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk", "loguru GitHub: https://github.com/Delgan/loguru"]},
-        {"title": "Step Output", "content": ["Output Name: Callable Video Compression Ratio Calculator MCP Service", "Output Introduction: Build and start SSE protocol video compression ratio calculator MCP service"]},
-        {"title": "Estimated Time", "content": ["0.25-0.5 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Build custom MCP service for video compression ratio calculation (named cus-tool-video_compression_calculator) to calculate compression duration allocation for multiple videos, ensuring the total duration after compression does not exceed the target duration"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Backend/Algorithm Engineer",
+            "- Skill Requirements: Familiar with Python",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: Video Compression Ratio Calculator MCP Service Build and Start",
+            "- Input Description: Install and start related MCP services by installing Python dependencies",
+            "- Input Example:",
+            "requirements.txt as follows:",
+            "```bash",
+            "# Recommended Python 3.10 or above, such as Python 3.11",
+            "",
+            "loguru>=0.7.0",
+            "python-dotenv>=1.0.0",
+            "mcp>=1.0.0",
+            "",
+            "# Note: Install via pip install -r requirements.txt",
+            "```",
+            "Python code is as follows (see source file for complete code):",
+            "- Resource Links:",
+            "1. mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk",
+            "2. loguru GitHub: https://github.com/Delgan/loguru"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Callable Video Compression Ratio Calculator MCP Service",
+            "- Output Description: Build and start SSE protocol video compression ratio calculator MCP service"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.25-0.5 day"
+          ]
+        }
       ]
     },
     {
       "number": 7,
-      "title": "song-generation Service Configuration and Startup (Optional)",
+      "title": "song-generation Service Configuration and Start (Optional)",
       "subsections": [
-        {"title": "Step Definition", "content": ["Configure and start song-generation service, supporting text-to-instrumental-music generation (denoted as bgm.wav)", "Note: This step requires GPU and has certain configuration threshold, you can also use online products like https://suno.com/"]},
-        {"title": "Participants", "content": ["Role Name: Algorithm Engineer", "Skill Requirements:", "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights", "Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5", "Proficient in Python, capable of using basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)", "Proactive attitude, organized communication, curiosity and self-drive", "Role Count: 1 person"]},
-        {"title": "Step Input", "content": ["Input Name: song-generation Service Configuration and Startup", "Input Introduction: Install and start relevant web services by installing related Python dependencies", "Input Example:", "Pull docker image: docker pull juhayna/song-generation-levo:hf0613", "Start container: docker run -it --gpus all --network=host juhayna/song-generation-levo:hf0613 /bin/bash", "Download necessary resources and models (SongGeneration-base, SongGeneration-base-new, SongGeneration-base-full, SongGeneration-large)", "Start web service: bash tools/gradio/run.sh your_ckpt_path", "After startup, access http://IP:8081 in browser, enter text in the left text box, then click the button below to generate songs/instrumental music", "Resource Links:", "SongGeneration GitHub: https://github.com/tencent-ailab/SongGeneration"]},
-        {"title": "Step Output", "content": ["Output Name: Usable song-generation Web Service", "Output Introduction: Configure and start gradio song-generation web service"]},
-        {"title": "Estimated Time", "content": ["1-2 days"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Configure and start song-generation service to support text-to-instrumental-music generation (named bgm.wav)",
+            "Note: This step requires GPU and has certain configuration complexity, you can also use online products like https://suno.com/"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: song-generation Service Configuration and Start",
+            "- Input Description: Install and start related web services by installing Python dependencies",
+            "- Input Example:",
+            "Related commands:",
+            "```bash",
+            "# Pull docker image (ensure network connectivity), and start service entering container",
+            "docker pull juhayna/song-generation-levo:hf0613",
+            "docker run -it --gpus all --network=host juhayna/song-generation-levo:hf0613 /bin/bash",
+            "",
+            "# Download necessary resources",
+            "huggingface-cli download lglg666/SongGeneration-Runtime --local-dir ./runtime",
+            "mv runtime/ckpt ckpt",
+            "mv runtime/third_party third_party",
+            "",
+            "# Download related models",
+            "# download SongGeneration-base",
+            "huggingface-cli download lglg666/SongGeneration-base --local-dir ./songgeneration_base",
+            "# download SongGeneration-base-new",
+            "huggingface-cli download lglg666/SongGeneration-base-new --local-dir ./songgeneration_base_new",
+            "# download SongGeneration-base-full",
+            "huggingface-cli download lglg666/SongGeneration-base-full --local-dir ./songgeneration_base_full",
+            "# download SongGeneration-large",
+            "huggingface-cli download lglg666/SongGeneration-large --local-dir ./songgeneration_large",
+            "",
+            "# Start web service",
+            "bash tools/gradio/run.sh your_ckpt_path",
+            "",
+            "Note: After starting, visit http://IP:8081 in browser, enter text in the left text box, then click the button below to generate song/instrumental music (you can play and download the corresponding audio file after generation)",
+            "```",
+            "- Resource Links:",
+            "1. SongGeneration GitHub: https://github.com/tencent-ailab/SongGeneration"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Usable song-generation Web Service",
+            "- Output Description: Configure and start gradio song-generation web service"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "1-2 days"
+          ]
+        }
       ]
     },
     {
       "number": 8,
-      "title": "Generate Introduction Video Using Claude Code",
+      "title": "Generate Demo Video Using Claude Code",
       "subsections": [
-        {"title": "Step Definition", "content": ["Use Claude Code to automatically call the previous MCP services to generate introduction video"]},
-        {"title": "Participants", "content": ["Role Name: Algorithm Engineer", "Skill Requirements:", "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights", "Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5", "Proficient in Python, capable of using basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)", "Proactive attitude, organized communication, curiosity and self-drive", "Role Count: 1 person"]},
-        {"title": "Step Input", "content": ["Input Name: Generate Introduction Video Using Claude Code", "Input Introduction: Interact with Claude Code to confirm input information to generate introduction video", "Input Example:", "First register the MCP services built and started in the previous steps in Claude Code:", "claude mcp add -s user -t sse asr-funasr http://127.0.0.1:4005/sse", "claude mcp add -s user -t sse tts-paddle_speech http://127.0.0.1:4006/sse", "claude mcp add -s user -t sse cus-tool-video_compression_calculator http://127.0.0.1:4007/sse", "claude mcp add -s user -t sse video-ffmpeg http://127.0.0.1:4008/sse", "Pass in existing video materials and video_editing_skill.md", "Video material requirements: files/ directory contains number.title.suffix (screen recording video files), text.txt (text/copy material files), bgm.wav (background music, optional)", "video_editing_skill.md contains complete video production standardized process, including: environment preparation, input file validation, video content analysis and user confirmation, TTS audio generation and duration calculation, video/audio separation, duration matching compression, subtitle generation, text proofreading, video segment synthesis, video merging, background music adding and other stages", "Start Claude Code in project root directory: claude --dangerously-skip-permissions", "Enter prompt: Generate introduction video based on video materials and video_editing_skill.md", "Resource Links:", "Claude Code GitHub: https://github.com/anthropics/claude-code"]},
-        {"title": "Step Output", "content": ["Output Name: Introduction Video", "Output Introduction: Final introduction video automatically edited by Claude Code"]},
-        {"title": "Estimated Time", "content": ["0.5-1 day"]}
+        {
+          "title": "Step Definition",
+          "content": [
+            "Use Claude Code to automatically invoke the previous MCP services to generate demo video"
+          ]
+        },
+        {
+          "title": "Participants",
+          "content": [
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
+          ]
+        },
+        {
+          "title": "Input",
+          "content": [
+            "- Input Name: Generate Demo Video Using Claude Code",
+            "- Input Description: Interact with Claude Code to confirm input information to generate demo video",
+            "- Input Example:",
+            "First register the MCP services built and started in previous steps in Claude Code",
+            "```bash",
+            "# ASR",
+            "claude mcp add -s user -t sse asr-funasr http://127.0.0.1:4005/sse",
+            "",
+            "# TTS",
+            "claude mcp add -s user -t sse tts-paddle_speech http://127.0.0.1:4006/sse",
+            "",
+            "# Custom Tools",
+            "claude mcp add -s user -t sse cus-tool-video_compression_calculator http://127.0.0.1:4007/sse",
+            "",
+            "# Video",
+            "claude mcp add -s user -t sse video-ffmpeg http://127.0.0.1:4008/sse",
+            "```",
+            "Pass in existing video materials and video_editing_skill.md",
+            "```python",
+            "# Video material requirements",
+            "Project root/",
+            "├── files/ # Raw material folder",
+            "│ ├── number.title.suffix # Different functional screen recording video files (required)",
+            "│ ├── text.txt # Text/copy material file (required)",
+            "│ └── bgm.wav # Background music (optional)",
+            "└── video_editing_skill.md # Video generation workflow document (required)",
+            "",
+            "",
+            "# video_editing_skill.md content as follows (see source file for complete content):",
+            "```",
+            "Start Claude Code in project root directory to generate demo video",
+            "```bash",
+            "# Start claude with higher permissions, please ensure no other files in project root except files and video_editing_skill.md, and forbid using dangerous commands like \"rm -rf *\"",
+            "claude --dangerously-skip-permissions",
+            "> Generate demo video based on video materials and video_editing_skill.md",
+            "",
+            "Note: There will be options for video duration etc. requiring user confirmation, then the final demo video will be automatically generated (generation quality depends on the LLM, ASR, TTS models used, and LLM has certain randomness)",
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
+          ]
+        },
+        {
+          "title": "Output",
+          "content": [
+            "- Output Name: Demo Video",
+            "- Output Description: Final demo video automatically edited by Claude Code"
+          ]
+        },
+        {
+          "title": "Estimated Time",
+          "content": [
+            "0.5-1 day"
+          ]
+        }
       ]
     }
   ]

@@ -2,7 +2,7 @@
   "phases": [
     {
       "number": 1,
-      "title": "PHASE 1 Requirement Identification and Team Building",
+      "title": "PHASE 1 Requirements Identification and Team Building",
       "subsections": [
         {
           "title": "Team Composition",
@@ -14,13 +14,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- The business liaison, product manager, and algorithm liaison conduct initial requirement contact and brainstorming sessions to identify the core requirements of this case",
-            "- The business liaison and algorithm liaison form a working group and communication channel, clarifying the liaison persons and contact methods",
-            "- The business liaison, together with the product manager (with UI designer support if necessary), clearly describes the functionality and effect plan of the target webpage to the algorithm liaison in text form",
-            "- Both parties communicate and supplement other materials needed for requirement confirmation, such as website page diagrams, detailed website functions, etc.",
-            "- The algorithm liaison evaluates the requirements based on the meeting content and the documents and materials provided"
+            "1. The business liaison, product manager, and algorithm liaison conduct initial requirement contact and brainstorming sessions to identify the core requirements of this case",
+            "2. The business liaison and algorithm liaison form a working group and communication channel, clarifying the liaison persons and contact methods",
+            "3. The business liaison, together with the product manager (with UI designer support if necessary), clearly describes the functionality and effect plan of the target webpage to the algorithm liaison in text form",
+            "4. Both parties communicate and supplement other materials needed for requirement confirmation, such as website page diagrams, detailed website functions, etc.",
+            "5. The algorithm liaison evaluates the requirements based on the meeting content and the documents and materials provided"
           ]
         },
         {
@@ -32,21 +32,21 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Establish a working group with clarified liaison persons and contact methods",
-            "- Complete the project cooperation requirement form (i.e., target page planning) with preliminary organization of requirements"
+            "1. Establish a working group with clarified liaison persons and contact methods",
+            "2. Complete the project cooperation requirement form (i.e., target page planning) with preliminary organization of requirements"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "- 1-3 days"
+            "1-3 days"
           ]
         }
       ]
     },
     {
       "number": 2,
-      "title": "PHASE 2 Value Confirmation and Requirement Refinement",
+      "title": "PHASE 2 Value Confirmation and Requirements Refinement",
       "subsections": [
         {
           "title": "Team Composition",
@@ -59,13 +59,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- The business liaison communicates with their business experts and related teams to confirm the expected goals and business value of the implementation; business value should be quantified as much as possible with comparative data (such as current numbers, expected targets, expected improvement compared to current status, etc.)",
-            "- The algorithm liaison communicates with their algorithm experts and related teams to list items pending confirmation while conducting preliminary research, evaluation, and design of the solution",
-            "- The product manager communicates with the business liaison and algorithm liaison to organize and clarify requirements, then organizes relevant personnel from both parties to write the preliminary verification requirement document",
-            "- Both parties confirm requirements based on the preliminary verification requirement document and plan schedules, budgets, and resources according to confirmed requirements. Schedule recommendation: First, the contractor completes preliminary verification, selection, and produces a Demo, with PoC as the first milestone; afterwards, both parties further negotiate formal project initiation",
-            "- Repeat the above steps until the preliminary verification requirement document is finalized"
+            "1. The business liaison communicates with their business experts and related teams to confirm the expected goals and business value of the implementation; business value should be quantified as much as possible with comparative data (such as current numbers, expected targets, expected improvement compared to current status, etc.)",
+            "2. The algorithm liaison communicates with their algorithm experts and related teams to list items pending confirmation while conducting preliminary research, evaluation, and design of the solution",
+            "3. The product manager communicates with the business liaison and algorithm liaison to organize and clarify requirements, then organizes relevant personnel from both parties to write the preliminary verification requirement document",
+            "4. Both parties confirm requirements based on the preliminary verification requirement document and plan schedules, budgets, and resources according to confirmed requirements. Schedule recommendation: First, the contractor completes preliminary verification, selection, and produces a Demo, with PoC as the first milestone; afterwards, both parties further negotiate formal project initiation",
+            "5. Repeat the above steps until the preliminary verification requirement document is finalized"
           ]
         },
         {
@@ -77,14 +77,14 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Preliminary verification requirement document",
-            "- PoC-related matters confirmed, such as start time, acceptance time, acceptance plan, etc."
+            "1. Preliminary verification requirement document",
+            "2. PoC-related matters confirmed, such as start time, acceptance time, acceptance plan, etc."
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "- 2-4 weeks"
+            "2-4 weeks"
           ]
         }
       ]
@@ -103,15 +103,15 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Install and configure Claude Code (optional, can be written manually by the product manager)",
-            "- Use Claude Code to assist in generating and refining target page layout outlines and other materials (optional, can be written manually by the product manager)",
-            "- Log in to the Lovable official website, input target page layout outlines and other materials, and complete Demo construction through context engineering",
-            "- The algorithm team writes the preliminary verification report",
-            "- Complete PoC",
-            "- Both parties communicate closely to confirm whether to formally initiate the project and build the official website",
-            "- If planning to formally launch, both parties adjust the Demo effect plan, finalize the project initiation report, and prepare the project initiation agreement and startup matters"
+            "1. Install and configure Claude Code (optional, can be written manually by the product manager)",
+            "2. Use Claude Code to assist in generating and refining target page layout outlines and other materials (optional, can be written manually by the product manager)",
+            "3. Log in to the Lovable official website, input target page layout outlines and other materials, and complete Demo construction through context engineering",
+            "4. The algorithm team writes the preliminary verification report",
+            "5. Complete PoC",
+            "6. Both parties communicate closely to confirm whether to formally initiate the project and build the official website",
+            "7. If planning to formally launch, both parties adjust the Demo effect plan, finalize the project initiation report, and prepare the project initiation agreement and startup matters"
           ]
         },
         {
@@ -125,23 +125,23 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Finalize and deliver the preliminary verification report",
-            "- Complete Demo construction, prepare for and pass PoC",
-            "- Project initiation report",
-            "- Project initiation agreement (attachments should include delivery, acceptance, schedule, resources, etc. for the official launch version)"
+            "1. Finalize and deliver the preliminary verification report",
+            "2. Complete Demo construction, prepare for and pass PoC",
+            "3. Project initiation report",
+            "4. Project initiation agreement (attachments should include delivery, acceptance, schedule, resources, etc. for the official launch version)"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "- 1-2 days"
+            "1-2 days"
           ]
         }
       ]
     },
     {
       "number": 4,
-      "title": "PHASE 4 Official Launch and Optimization Iteration",
+      "title": "PHASE 4 Official Launch and Iterative Optimization",
       "subsections": [
         {
           "title": "Team Composition",
@@ -150,13 +150,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Complete formal project initiation and determine the start time",
-            "- Implement and deliver according to the project initiation report content and schedule plan",
-            "- Review and accept according to the project initiation report goals and processes",
-            "- Operate and iterate according to the project initiation report plan",
-            "- Complete project closure according to the project initiation report plan and agreement"
+            "1. Complete formal project initiation and determine the start time",
+            "2. Implement and deliver according to the project initiation report content and schedule plan",
+            "3. Review and accept according to the project initiation report goals and processes",
+            "4. Operate and iterate according to the project initiation report plan",
+            "5. Complete project closure according to the project initiation report plan and agreement"
           ]
         },
         {
@@ -168,14 +168,14 @@
         {
           "title": "Deliverables",
           "content": [
-            "- All materials mutually agreed upon by both parties throughout the project lifecycle",
-            "- Officially launched product"
+            "1. All materials mutually agreed upon by both parties throughout the project lifecycle",
+            "2. Officially launched product"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "- 3-6 months (varies depending on specific circumstances)"
+            "3-6 months (varies depending on specific circumstances)"
           ]
         }
       ]

@@ -2,7 +2,7 @@
   "phases": [
     {
       "number": 1,
-      "title": "PHASE 1 Requirement Identification and Team Building",
+      "title": "PHASE 1 Requirements Identification and Team Building",
       "subsections": [
         {
           "title": "Team Composition",
@@ -13,13 +13,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- The business liaison and algorithm liaison conduct initial requirement contact and brainstorming exchange to sort out the core requirements of this case",
-            "- The business liaison and algorithm liaison form a working group and contact group, clarifying the liaisons and contact methods",
-            "- The business liaison (representing the requirements side team) fills out the project cooperation requirement inquiry form provided by the algorithm liaison (representing the undertaking side team); if there is already a clear concept and multiple sub-tasks can be broken down, the sub-task algorithm requirement template can be further filled out",
-            "- Both parties communicate to supplement other materials needed for requirement confirmation, such as sample data, professional knowledge reference materials, etc.",
-            "- The algorithm liaison coordinates their own team to conduct requirement assessment based on the meeting content and feedback documents and materials"
+            "1. The business liaison and algorithm liaison conduct initial requirement contact and brainstorming exchange to sort out the core requirements of this case",
+            "2. The business liaison and algorithm liaison form a working group and contact group, clarifying the liaisons and contact methods",
+            "3. The business liaison (representing the requirements side team) fills out the project cooperation requirement inquiry form provided by the algorithm liaison (representing the undertaking side team); if there is already a clear concept and multiple sub-tasks can be broken down, the sub-task algorithm requirement template can be further filled out",
+            "4. Both parties communicate to supplement other materials needed for requirement confirmation, such as sample data, professional knowledge reference materials, etc.",
+            "5. The algorithm liaison coordinates their own team to conduct requirement assessment based on the meeting content and feedback documents and materials"
           ]
         },
         {
@@ -30,14 +30,14 @@
           ]
         },
         {
-          "title": "Result Output",
+          "title": "Deliverables",
           "content": [
-            "- Establish a working group, clarify liaisons and contact methods",
-            "- Complete the project cooperation requirement inquiry form (and sub-task algorithm requirement template), with preliminary sorting of requirements"
+            "1. Establish a working group, clarify liaisons and contact methods",
+            "2. Complete the project cooperation requirement inquiry form (and sub-task algorithm requirement template), with preliminary sorting of requirements"
           ]
         },
         {
-          "title": "Implementation Period",
+          "title": "Timeline",
           "content": [
             "1-3 days"
           ]
@@ -46,7 +46,7 @@
     },
     {
       "number": 2,
-      "title": "PHASE 2 Value Confirmation and Requirement Refinement",
+      "title": "PHASE 2 Value Confirmation and Requirements Refinement",
       "subsections": [
         {
           "title": "Team Composition",
@@ -60,13 +60,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- The business liaison communicates with their own business experts and related teams to confirm the expected goals and business value of this solution implementation. Business value needs to be quantified as much as possible, with comparative data (such as current numbers, expected achievement goals, expected degree of improvement compared to the current situation, etc.)",
-            "- The algorithm liaison communicates with their own algorithm experts and related teams to list items to be confirmed, while conducting preliminary research, evaluation, and design of the solution",
-            "- The product manager communicates with the business liaison and algorithm liaison to sort out and clarify requirements, then organizes relevant personnel from both parties to write the preliminary verify requirement document",
-            "- Both parties confirm requirements based on the preliminary verify requirement document, and plan scheduling, budget, and resources based on confirmed requirements. Scheduling suggestion: First, take the undertaking party completing preliminary verification, selection, producing a Demo, and passing PoC as the first milestone; afterwards, both parties further negotiate formal project establishment and implementation",
-            "- Repeat the above steps until the preliminary verify requirement document is finalized"
+            "1. The business liaison communicates with their own business experts and related teams to confirm the expected goals and business value of this solution implementation. Business value needs to be quantified as much as possible, with comparative data (such as current numbers, expected achievement goals, expected degree of improvement compared to the current situation, etc.)",
+            "2. The algorithm liaison communicates with their own algorithm experts and related teams to list items to be confirmed, while conducting preliminary research, evaluation, and design of the solution",
+            "3. The product manager communicates with the business liaison and algorithm liaison to sort out and clarify requirements, then organizes relevant personnel from both parties to write the preliminary verify requirement document",
+            "4. Both parties confirm requirements based on the preliminary verify requirement document, and plan scheduling, budget, and resources based on confirmed requirements. Scheduling suggestion: First, take the undertaking party completing preliminary verification, selection, producing a Demo, and passing PoC as the first milestone; afterwards, both parties further negotiate formal project establishment and implementation",
+            "5. Repeat the above steps until the preliminary verify requirement document is finalized"
           ]
         },
         {
@@ -76,14 +76,14 @@
           ]
         },
         {
-          "title": "Result Output",
+          "title": "Deliverables",
           "content": [
-            "- Preliminary verify requirement document",
-            "- PoC-related matters confirmation, such as start time, acceptance time, acceptance plan, etc."
+            "1. Preliminary verify requirement document",
+            "2. PoC-related matters confirmation, such as start time, acceptance time, acceptance plan, etc."
           ]
         },
         {
-          "title": "Implementation Period",
+          "title": "Timeline",
           "content": [
             "2-4 weeks"
           ]
@@ -92,7 +92,7 @@
     },
     {
       "number": 3,
-      "title": "PHASE 3 Preliminary Verification and Project Establishment",
+      "title": "PHASE 3 Preliminary Verification and Project Initiation",
       "subsections": [
         {
           "title": "Team Composition",
@@ -104,15 +104,15 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Acquire and preprocess open-source model and evaluation set resources, complete the software and hardware environment configuration required for the proposed solution to run",
-            "- Complete the model file download and configuration of the large model required for the solution, and verify whether the model can run normally and implement NL2SQL functionality",
-            "- Use Bird Bench dev (validation set) to evaluate the deployed model, calculate core indicators, compare benchmark performance on the leaderboard, ensure the model meets current solution requirements on a runnable basis",
-            "- The algorithm team writes a preliminary verify report",
-            "- Complete PoC",
-            "- Both parties communicate closely to confirm whether to formally establish the project",
-            "- If planning to establish the project for formal release, both parties adjust the plan based on Demo effects, finalize the project establishment report, prepare the project establishment agreement and startup matters"
+            "1. Acquire and preprocess open-source model and evaluation set resources, complete the software and hardware environment configuration required for the proposed solution to run",
+            "2. Complete the model file download and configuration of the large model required for the solution, and verify whether the model can run normally and implement NL2SQL functionality",
+            "3. Use Bird Bench dev (validation set) to evaluate the deployed model, calculate core indicators, compare benchmark performance on the leaderboard, ensure the model meets current solution requirements on a runnable basis",
+            "4. The algorithm team writes a preliminary verify report",
+            "5. Complete PoC",
+            "6. Both parties communicate closely to confirm whether to formally establish the project",
+            "7. If planning to establish the project for formal release, both parties adjust the plan based on Demo effects, finalize the project establishment report, prepare the project establishment agreement and startup matters"
           ]
         },
         {
@@ -129,57 +129,57 @@
           ]
         },
         {
-          "title": "Result Output",
+          "title": "Deliverables",
           "content": [
-            "- Finalize and deliver the preliminary verify report",
-            "- Complete Demo construction, prepare and finally pass PoC",
-            "- Project establishment report",
-            "- Project establishment agreement (attachments should include delivery, acceptance, scheduling, resources, etc. for the formal release version)"
+            "1. Finalize and deliver the preliminary verify report",
+            "2. Complete Demo construction, prepare and finally pass PoC",
+            "3. Project establishment report",
+            "4. Project establishment agreement (attachments should include delivery, acceptance, scheduling, resources, etc. for the formal release version)"
           ]
         },
         {
-          "title": "Implementation Period",
+          "title": "Timeline",
           "content": [
-            "1.5-2.5 days"
+            "5-2.5 days"
           ]
         }
       ]
     },
     {
       "number": 4,
-      "title": "PHASE 4 Formal Launch and Optimization Iteration",
+      "title": "PHASE 4 Official Launch and Iterative Optimization",
       "subsections": [
         {
           "title": "Team Composition",
           "content": [
-            "Determined according to the project establishment report"
+            "- Determined according to the project establishment report"
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Complete formal project establishment, determine start time",
-            "- Implement and deliver according to the project establishment report content and scheduling plan",
-            "- Review and accept according to the project establishment report goals and processes",
-            "- Operate and iterate according to the project establishment report planning",
-            "- Complete project closure according to the project establishment report planning and agreement stipulations"
+            "1. Complete formal project establishment, determine start time",
+            "2. Implement and deliver according to the project establishment report content and scheduling plan",
+            "3. Review and accept according to the project establishment report goals and processes",
+            "4. Operate and iterate according to the project establishment report planning",
+            "5. Complete project closure according to the project establishment report planning and agreement stipulations"
           ]
         },
         {
           "title": "Related Resources",
           "content": [
-            "/"
+            "- /"
           ]
         },
         {
-          "title": "Result Output",
+          "title": "Deliverables",
           "content": [
-            "- All materials agreed upon by both parties throughout the project lifecycle",
-            "- Formally launched product"
+            "1. All materials agreed upon by both parties throughout the project lifecycle",
+            "2. Formally launched product"
           ]
         },
         {
-          "title": "Implementation Period",
+          "title": "Timeline",
           "content": [
             "3-6 months (varies depending on specific circumstances)"
           ]

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Arena } from '@/lib/types';
 import {
@@ -420,7 +420,7 @@ export function ArenaDetailClient({ arena, locale, arenaId: _arenaId, initialCon
                     loop
                     playsInline
                   >
-                    <source src={withBasePath('/videos/' + (arena.videoFile || arena.folderId + '.mp4'))} type="video/mp4" />
+                    <source src="https://rwai-dev.oss-cn-shanghai.aliyuncs.com/demo.mp4" type="video/mp4" />
                     {locale === 'zh' ? '您的浏览器不支持视频播放' : 'Your browser does not support the video tag.'}
                   </video>
                 </div>
@@ -1777,6 +1777,52 @@ function ImplementationSection({ content, locale }: { content: ArenaTabContent; 
 
   const phases = parseContent(content);
 
+  const renderInlineLinks = (text: string, keyPrefix: string): ReactNode => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const nodes: ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+    let idx = 0;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      const [fullMatch, label, href] = match;
+      const start = match.index;
+
+      if (start > lastIndex) {
+        nodes.push(
+          <span key={`${keyPrefix}-text-${idx}`}>
+            {text.slice(lastIndex, start)}
+          </span>
+        );
+      }
+
+      nodes.push(
+        <a
+          key={`${keyPrefix}-link-${idx}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline underline-offset-2"
+        >
+          {label}
+        </a>
+      );
+
+      lastIndex = start + fullMatch.length;
+      idx += 1;
+    }
+
+    if (lastIndex < text.length) {
+      nodes.push(
+        <span key={`${keyPrefix}-tail`}>
+          {text.slice(lastIndex)}
+        </span>
+      );
+    }
+
+    return nodes.length > 0 ? nodes : text;
+  };
+
   // Render phase card
   const renderPhaseCard = (phase: typeof phases[0], idx: number) => {
     const isEven = idx % 2 === 0;
@@ -1821,12 +1867,18 @@ function ImplementationSection({ content, locale }: { content: ArenaTabContent; 
                   {subsection.content.map((item, itemIdx) => {
                     // List items
                     if (/^\d+\.\s+/.test(item) || item.startsWith('-')) {
+                      const cleaned = item
+                        .replace(/^\d+\.\s+/, '')
+                        .replace(/^-\s*/, '')
+                        .replace(/\*\*/g, '');
                       return (
                         <div key={itemIdx} className="flex items-start gap-3 text-gray-700">
                           <span className="text-violet-600 flex-shrink-0 mt-1">
                             {/^\d+\.\s+/.test(item) ? '➢' : '•'}
                           </span>
-                          <span className="leading-relaxed">{item.replace(/^\d+\.\s+/, '').replace(/^-\s*/, '').replace(/\*\*/g, '')}</span>
+                          <span className="leading-relaxed">
+                            {renderInlineLinks(cleaned, `impl-list-${idx}-${subIdx}-${itemIdx}`)}
+                          </span>
                         </div>
                       );
                     }
@@ -1852,9 +1904,10 @@ function ImplementationSection({ content, locale }: { content: ArenaTabContent; 
 
                     // Regular text
                     if (item && !item.startsWith('__')) {
+                      const cleaned = item.replace(/\*\*/g, '');
                       return (
                         <p key={itemIdx} className="text-gray-700 leading-relaxed">
-                          {item.replace(/\*\*/g, '')}
+                          {renderInlineLinks(cleaned, `impl-text-${idx}-${subIdx}-${itemIdx}`)}
                         </p>
                       );
                     }

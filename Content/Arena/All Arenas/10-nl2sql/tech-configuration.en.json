@@ -7,52 +7,52 @@
         {
           "title": "Step Definition",
           "content": [
-            "Obtain and preprocess open-source models and benchmark datasets, and complete the hardware and software environment configuration required for the proposed solution."
+            "Acquire and preprocess open-source models and evaluation datasets, complete the software and hardware environment configuration required for the proposed solution"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer",
-            "Skill Requirements:",
-            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
-            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
-            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
-            "Proactive attitude, organized communication, curiosity and self-motivation",
-            "Number of Roles: 1 person"
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Resources Required for Environment Configuration",
-            "Input Description:",
-            "Check if the hardware meets the following requirements: GPU preferably NVIDIA A10 or above, VRAM >= 16GB, CPU >= 8 cores, RAM >= 32GB, operating system Linux (Ubuntu 20.04+).",
-            "Download and install the required software resources:",
+            "- Input Name: Resources required for environment configuration",
+            "- Input Description:",
+            "Check whether the hardware of the running environment meets the following requirements: GPU preferably NVIDIA A10 or above, GPU with VRAM ≥ 16GB, CPU ≥ 8 cores, RAM ≥ 32GB, operating system Linux (Ubuntu 20.04+).",
+            "Download and install corresponding software resources:",
             "Configure vLLM model framework",
             "Download BIRD Bench dataset",
-            "Download the code for XiYanSQL-QwenCoder model and understand its basic usage",
-            "(Optional) Download and read BIRD benchmark paper to understand its basic information and usage",
-            "Input Example:",
-            "Checklist for self-verification:",
+            "Download LLM XiYanSQL-QwenCoder related code, understand its basic usage",
+            "(Optional) Download and read BIRD evaluation dataset literature, understand its basic information and usage",
+            "- Input Example:",
+            "Please list a checklist for self-inspection:",
             "NVIDIA A10 or above",
-            "VRAM >= 16GB",
-            "CPU >= 8 cores",
-            "RAM >= 32GB",
-            "Sample format example:",
-            "Resource Links:",
-            "vLLM Installation Documentation: https://vllm.hyper.ai/docs/getting-started/installation",
-            "XiYanSQL-QwenCoder Code Github: https://github.com/XGenerationLab/XiYanSQL-QwenCoder",
-            "XiYanSQL-QwenCoder Paper Github: https://qwenlm.github.io/blog/qwen3-coder/",
-            "BIRD Benchmark (training and validation sets) Github: https://bird-bench.github.io/",
-            "BIRD Benchmark Paper arXiv: https://arxiv.org/abs/2507.04701"
+            "GPU with VRAM ≥ 16GB",
+            "CPU ≥ 8 cores",
+            "RAM ≥ 32GB",
+            "Single sample format example:",
+            "- Resource Links:",
+            "1. vLLM Installation Documentation: https://vllm.hyper.ai/docs/getting-started/installation",
+            "2. XiYanSQL-QwenCoder Code Github: https://github.com/XGenerationLab/XiYanSQL-QwenCoder",
+            "3. XiYanSQL-QwenCoder Literature Github: https://qwenlm.github.io/blog/qwen3-coder/",
+            "4. BIRD Evaluation Dataset (including training and validation sets) Github: https://bird-bench.github.io/",
+            "5. BIRD Evaluation Dataset Literature arXiv: https://arxiv.org/abs/2507.04701"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Environment Configuration Resources Ready",
-            "Output Description: Server configured with GPU drivers, Docker, vLLM, meeting hardware and system requirements for model deployment; BIRD Bench dataset downloaded and extracted. Environment displays 'configuration successful', dataset downloaded locally as files."
+            "- Output Name: Environment configuration resources ready",
+            "- Output Description: Server configured with GPU driver, Docker, vLLM, meeting hardware and system requirements for model deployment; BIRD Bench dataset downloaded and extracted. Related environment shows \"configuration successful\", dataset downloaded locally displayed as files."
           ]
         },
         {
@@ -70,32 +70,33 @@
         {
           "title": "Step Definition",
           "content": [
-            "After the environment configuration is ready, complete the model file download and configuration for the required large model, and verify that the model can run normally and implement NL2SQL functionality."
+            "After the environment configuration from previous step is ready, this step completes the model file download and configuration for the LLM required by the solution, and verifies whether the model can run normally and implement NL2SQL functionality."
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer",
-            "Skill Requirements:",
-            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
-            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
-            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
-            "Proactive attitude, organized communication, curiosity and self-motivation",
-            "Number of Roles: 1 person"
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Ready Environment, Model Configuration Resources",
-            "Input Description:",
+            "- Input Name: Ready environment, model configuration resources",
+            "- Input Description:",
             "Download model files",
-            "Install and configure the downloaded model files",
-            "Run the large model and confirm normal operation",
-            "Input Example: Model Download and Model Deployment",
-            "Model Deployment (based on vLLM):",
-            "```python",
+            "Install and configure downloaded model files",
+            "Run LLM and confirm normal operation",
+            "- Input Example: Model download and model deployment",
+            "Model deployment (based on vLLM):",
+            "```bash",
+            "Model",
             "from vllm import LLM, SamplingParams",
             "from transformers import AutoTokenizer",
             "",
@@ -103,7 +104,7 @@
             "model_path = \"XGenerationLab/XiYanSQL-QwenCoder-32B-2504\" # Replace with local model path",
             "",
             "# Initialize LLM and tokenizer",
-            "llm = LLM(model=model_path, tensor_parallel_size=8) # Adjust tensor_parallel_size based on GPU count",
+            "llm = LLM(model=model_path, tensor_parallel_size=8) # Adjust tensor_parallel_size according to GPU count",
             "tokenizer = AutoTokenizer.from_pretrained(model_path)",
             "",
             "# Configure sampling parameters",
@@ -113,9 +114,9 @@
             "    max_tokens=1024",
             ")",
             "",
-            "# Prepare prompt",
+            "# Prepare prompt (same as above)",
             "prompt = nl2sqlite_template_cn.format(",
-            "    dialect=\"PostgreSQL\", # Select appropriate dialect",
+            "    dialect=\"PostgreSQL\", # Select corresponding dialect",
             "    question=\"Your question\",",
             "    db_schema=\"Database schema information\",",
             "    evidence=\"Reference information (optional)\"",
@@ -134,15 +135,15 @@
             "response = outputs[0].outputs[0].text",
             "print(response)",
             "```",
-            "Resource Link:",
-            "XiYanSQL-QwenCoder Model File HuggingFace: https://huggingface.co/XGenerationLab/XiYanSQL-QwenCoder-32B-2504"
+            "- Resource Links:",
+            "1. XiYanSQL-QwenCoder Model File HuggingFace: https://huggingface.co/XGenerationLab/XiYanSQL-QwenCoder-32B-2504"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Model Ready",
-            "Output Description: Model installed and running successfully, capable of receiving natural language question input and accurately outputting corresponding SQL statements."
+            "- Output Name: Model ready",
+            "- Output Description: Model installed and running successfully, able to receive natural language question input and accurately output corresponding SQL statements."
           ]
         },
         {
@@ -160,46 +161,46 @@
         {
           "title": "Step Definition",
           "content": [
-            "Use Bird Bench dev (validation set) to evaluate the deployed model, calculate core metrics, compare with benchmark performance on the leaderboard, and ensure the model meets current solution requirements while being operational."
+            "Use Bird Bench dev (validation set) to evaluate the deployed model, calculate core metrics, compare with leaderboard baseline performance, ensure the model meets current solution requirements on a runnable basis."
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer",
-            "Skill Requirements:",
-            "Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal experience and insights",
-            "Proficient in NLP classic deep learning models (Transformer, LLaMA, GLM series, etc.) and related resources (websites, libraries, blogs); mastered at least one common deep learning framework such as PyTorch; continuously interested in the working principles and latest developments of large-scale generative language models since GPT-3.5",
-            "Proficient in Python, basic regular expressions and command-line scripts; familiar with NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation, etc.); skilled in using common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
-            "Proactive attitude, organized communication, curiosity and self-motivation",
-            "Number of Roles: 1 person"
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in various chain-of-thought strategies, familiar with frontier and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (LLMs) after GPT-3.5",
+            "3. Proficient in Python, able to use basic regular expressions and command-line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Ready Model, Ready Bird Bench Validation Set, Evaluation Script",
-            "Input Description:",
+            "- Input Name: Ready model, ready Bird Bench validation set, evaluation script",
+            "- Input Description:",
             "Ensure model and validation set are ready",
-            "Obtain Bird Bench evaluation script and ensure it can run normally",
-            "Run the model on validation set and use evaluation script for metric evaluation, record results and compare with Bird Bench official baseline",
-            "Input Example:",
-            "Run evaluation script via command line:",
-            "```bash",
+            "Obtain Bird Bench evaluation script, ensure script can run normally",
+            "Run model on validation set, use evaluation script for metric evaluation, record evaluation results, compare with Bird Bench official published baseline",
+            "- Input Example:",
+            "Run evaluation script in command-line format:",
+            "```text",
             "poetry run python -u ./bird_evaluation/src/evaluation.py \\",
             "    --predicted_sql_path ./mock_dataset/ --ground_truth_path ./mock_dataset/ \\",
             "    --db_root_path ./mock_dataset/databases/ --data_mode mock \\",
             "    --diff_json_path ./mock_dataset/questions.json",
             "```",
-            "Resource Link:",
-            "Bird bench evaluation script GitHub: https://github.com/arcwisedata/bird-sql"
+            "- Resource Links:",
+            "1. Bird bench evaluation script GitHub: https://github.com/arcwisedata/bird-sql"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Model Evaluation Results",
-            "Output Description: Output the results of model evaluation on the benchmark, including metrics such as logical accuracy and execution accuracy. After comparing with Bird Bench official baseline, results are labeled and meet solution requirements."
+            "- Output Name: Model evaluation results",
+            "- Output Description: Output model results on evaluation dataset, including logical accuracy, execution accuracy and other metrics. After comparing with Bird Bench official published baseline, results are labeled, meeting solution requirements"
           ]
         },
         {

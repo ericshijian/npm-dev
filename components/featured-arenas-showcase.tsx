@@ -281,7 +281,7 @@ export function FeaturedArenasShowcase({ arenas, locale, title, subtitle }: Feat
                     }}
                   >
                     <source
-                      src={withBasePath(`/videos/${selectedArena.videoFile || `${selectedArena.folderId}.mp4`}`)}
+                      src="https://rwai-dev.oss-cn-shanghai.aliyuncs.com/demo.mp4"
                       type="video/mp4"
                     />
                     Your browser does not support the video tag.

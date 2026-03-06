@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
-import * as XLSX from 'xlsx';
 import type { Arena } from '@/lib/types';
 
 const ALL_ARENAS_DIR = path.join(process.cwd(), 'Content', 'Arena', 'All Arenas');
-const CSV_ZH_PATH = path.join(process.cwd(), 'Content', 'Arena', 'List of Arenas ZH.csv');
-const CSV_EN_PATH = path.join(process.cwd(), 'Content', 'Arena', 'List of Arenas EN.csv');
+const JSON_ZH_PATH = path.join(process.cwd(), 'Content', 'Arena', 'page.zh.json');
+const JSON_EN_PATH = path.join(process.cwd(), 'Content', 'Arena', 'page.en.json');
 const PUBLIC_DATA_DIR = path.join(process.cwd(), 'public', 'data');
 const ARENAS_JSON_PATH = path.join(PUBLIC_DATA_DIR, 'arenas.json');
 const ARENA_CONTENT_JSON_PATH = path.join(PUBLIC_DATA_DIR, 'arena-content.json');
@@ -42,45 +41,20 @@ type ArenaImplementationPayload = {
 type ArenaContentValue = string | ArenaTechConfigPayload | ArenaOverviewPayload | ArenaImplementationPayload;
 type ArenaContentMap = Record<string, Record<string, Record<string, ArenaContentValue>>>;
 
-type CsvZhRow = {
-  擂台编号?: string | number;
-  擂台名称?: string;
-  本周擂主?: string;
-  验证状态?: string;
-  亮点?: string;
-  行业类别?: string;
-  应用类别?: string;
-  速度?: string;
-  质量?: string;
-  安全?: string;
-  成本?: string;
-  攻擂中?: string;
-};
-
-type CsvEnRow = {
+// Unified row type for both ZH and EN JSON files
+type ArenaRow = {
   arena_no?: string | number;
-  title_zh?: string;
-  title_en?: string;
-  champion_zh?: string;
-  champion_en?: string;
-  verification_status_zh?: string;
-  verification_status_en?: string;
-  highlights_zh?: string;
-  highlights_en?: string;
-  industry_zh?: string;
-  industry_en?: string;
-  category_zh?: string;
-  category_en?: string;
-  speed_zh?: string;
-  speed_en?: string;
-  quality_zh?: string;
-  quality_en?: string;
-  security_zh?: string;
-  security_en?: string;
-  cost_zh?: string;
-  cost_en?: string;
-  challenger_zh?: string;
-  challenger_en?: string;
+  title?: string;
+  champion?: string;
+  verification_status?: string;
+  highlights?: string;
+  industry?: string;
+  category?: string;
+  speed?: string;
+  quality?: string;
+  security?: string;
+  cost?: string;
+  challenger?: string;
 };
 
 function ensureOutputDir() {
@@ -100,14 +74,15 @@ function parseJsonSafe(value: string | null): unknown {
   }
 }
 
-function readCsvRows<T extends Record<string, unknown>>(filePath: string): T[] {
+function readRowsFromJson<T extends Record<string, unknown>>(filePath: string): T[] {
   if (!fs.existsSync(filePath)) {
-    throw new Error(`CSV file not found: ${filePath}`);
+    throw new Error(`JSON file not found: ${filePath}`);
   }
-  const workbook = XLSX.readFile(filePath, { raw: false });
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  return XLSX.utils.sheet_to_json<T>(worksheet, { defval: '' });
+  const parsed = parseJsonSafe(fs.readFileSync(filePath, 'utf-8'));
+  if (!Array.isArray(parsed)) {
+    throw new Error(`JSON data is not an array: ${filePath}`);
+  }
+  return parsed as T[];
 }
 
 function cleanText(value: unknown): string {
@@ -148,11 +123,11 @@ function hasArenaContent(folderId: string): boolean {
   return required.some((file) => fs.existsSync(path.join(baseDir, file)));
 }
 
-function buildArenasFromCsv(): Arena[] {
-  const zhRows = readCsvRows<CsvZhRow>(CSV_ZH_PATH);
-  const enRows = readCsvRows<CsvEnRow>(CSV_EN_PATH);
+function buildArenasFromJson(): Arena[] {
+  const zhRows = readRowsFromJson<ArenaRow>(JSON_ZH_PATH);
+  const enRows = readRowsFromJson<ArenaRow>(JSON_EN_PATH);
 
-  const enMap = new Map<string, CsvEnRow>();
+  const enMap = new Map<string, ArenaRow>();
   for (const row of enRows) {
     const arenaNo = cleanText(row.arena_no);
     if (arenaNo) {
@@ -164,13 +139,13 @@ function buildArenasFromCsv(): Arena[] {
   const arenas: Arena[] = [];
 
   for (const row of zhRows) {
-    const arenaNo = cleanText(row.擂台编号);
+    const arenaNo = cleanText(row.arena_no);
     if (!arenaNo) continue;
 
     const enRow = enMap.get(arenaNo);
     const folderId = folderMap.get(arenaNo) || '';
 
-    const titleZh = cleanText(row.擂台名称 || enRow?.title_zh);
+    const titleZh = cleanText(row.title);
     if (!titleZh || titleZh.includes('敬请期待')) {
       continue;
     }
@@ -180,24 +155,24 @@ function buildArenasFromCsv(): Arena[] {
       folderId,
       title: {
         zh: titleZh,
-        en: cleanText(enRow?.title_en),
+        en: cleanText(enRow?.title),
       },
-      category: cleanText(row.应用类别 || enRow?.category_zh),
-      categoryEn: cleanText(enRow?.category_en),
-      industry: cleanText(row.行业类别 || enRow?.industry_zh),
-      industryEn: cleanText(enRow?.industry_en),
-      verificationStatus: cleanText(row.验证状态 || enRow?.verification_status_zh),
-      champion: cleanText(row.本周擂主 || enRow?.champion_zh),
-      championEn: cleanText(enRow?.champion_en),
-      challenger: cleanText(row.攻擂中 || enRow?.challenger_zh),
-      challengerEn: cleanText(enRow?.challenger_en),
-      highlights: cleanText(row.亮点 || enRow?.highlights_zh),
-      highlightsEn: cleanText(enRow?.highlights_en),
+      category: cleanText(row.category),
+      categoryEn: cleanText(enRow?.category),
+      industry: cleanText(row.industry),
+      industryEn: cleanText(enRow?.industry),
+      verificationStatus: cleanText(row.verification_status),
+      champion: cleanText(row.champion),
+      championEn: cleanText(enRow?.champion),
+      challenger: cleanText(row.challenger),
+      challengerEn: cleanText(enRow?.challenger),
+      highlights: cleanText(row.highlights),
+      highlightsEn: cleanText(enRow?.highlights),
       metrics: {
-        speed: cleanText(row.速度 || enRow?.speed_zh),
-        quality: cleanText(row.质量 || enRow?.quality_zh),
-        security: cleanText(row.安全 || enRow?.security_zh),
-        cost: cleanText(row.成本 || enRow?.cost_zh),
+        speed: cleanText(row.speed),
+        quality: cleanText(row.quality),
+        security: cleanText(row.security),
+        cost: cleanText(row.cost),
       },
       hasContent: hasArenaContent(folderId),
     };
@@ -277,13 +252,13 @@ function buildContentMapFromJsonFiles(): ArenaContentMap {
 function main() {
   ensureOutputDir();
 
-  const arenas = buildArenasFromCsv();
+  const arenas = buildArenasFromJson();
   const contentMap = buildContentMapFromJsonFiles();
 
   writeJson(ARENAS_JSON_PATH, arenas);
   writeJson(ARENA_CONTENT_JSON_PATH, contentMap);
 
-  console.log(`[export-static-data] source=csv+tabs-json`);
+  console.log(`[export-static-data] source=json+tabs-json`);
   console.log(`[export-static-data] arenas=${arenas.length}`);
   console.log(`[export-static-data] wrote ${ARENAS_JSON_PATH}`);
   console.log(`[export-static-data] wrote ${ARENA_CONTENT_JSON_PATH}`);

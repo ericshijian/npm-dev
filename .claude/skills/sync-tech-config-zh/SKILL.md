@@ -1,16 +1,16 @@
 ---
 name: sync-tech-config-zh
-description: 从 implementation-details.md 读取技术步骤部分，生成 tech-configuration.zh.json 文件到对应 arena 目录。每次处理一条数据。
+description: 从 Original Documents/implementation-details.md 读取技术步骤部分，生成 tech-configuration.zh.json 文件到对应 arena 目录。每次处理一条数据。
 ---
 
 # Sync Tech Config Zh
 
-从 implementation-details.md 提取技术步骤，生成中文 JSON 配置文件。
+从 Original Documents/implementation-details.md 提取技术步骤，生成中文 JSON 配置文件。
 
 ## 数据源
 
 - 目录: `Content/Arena/All Arenas/{arena-folder}/`
-- 文件: `implementation-details.md`
+- 文件: `Original Documents/implementation-details.md`
 - 目标: `tech-configuration.zh.json`（同目录）
 
 ## JSON 结构
@@ -40,8 +40,8 @@ description: 从 implementation-details.md 读取技术步骤部分，生成 tec
 1. 遍历 `Content/Arena/All Arenas/` 下的 arena 目录
 2. 找到下一条待处理的记录：
    - 没有 `tech-configuration.zh.json` 文件，或者
-   - `implementation-details.md` 的修改时间晚于 `tech-configuration.zh.json`（源文件已更新）
-3. 读取 `implementation-details.md` 文件
+   - `Original Documents/implementation-details.md` 的修改时间晚于 `tech-configuration.zh.json`（源文件已更新）
+3. 读取 `Original Documents/implementation-details.md` 文件
 4. 定位 "3\. **技术步骤**" 部分
 5. 解析每个技术步骤表格，提取：
    - 步骤序号
@@ -59,7 +59,7 @@ description: 从 implementation-details.md 读取技术步骤部分，生成 tec
 
 通过比较文件修改时间判断是否需要更新：
 - 使用 `stat -f %m` (macOS) 或 `stat -c %Y` (Linux) 获取文件修改时间戳
-- 如果 `implementation-details.md` 时间戳 > `tech-configuration.zh.json` 时间戳，则需要更新
+- 如果 `Original Documents/implementation-details.md` 时间戳 > `tech-configuration.zh.json` 时间戳，则需要更新
 
 ## 用法
 

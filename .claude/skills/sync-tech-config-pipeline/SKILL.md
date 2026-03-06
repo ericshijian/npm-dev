@@ -1,6 +1,6 @@
 ---
 name: sync-tech-config-pipeline
-description: 技术配置同步流水线。从 implementation-details.md 生成 zh/en JSON 文件。
+description: 技术配置同步流水线。从 Original Documents/implementation-details.md 生成 zh/en JSON 文件。
 ---
 
 # Sync Tech Config Pipeline
@@ -10,7 +10,7 @@ description: 技术配置同步流水线。从 implementation-details.md 生成 
 ## 工作流程
 
 ```
-implementation-details.md
+Original Documents/implementation-details.md
         ↓ (提取技术步骤)
   tech-configuration.zh.json
         ↓ (翻译)
@@ -19,7 +19,7 @@ implementation-details.md
 
 ## 数据目录
 
-- 源文件: `Content/Arena/All Arenas/{arena-folder}/implementation-details.md`
+- 源文件: `Content/Arena/All Arenas/{arena-folder}/Original Documents/implementation-details.md`
 - 输出文件: `Content/Arena/All Arenas/{arena-folder}/tech-configuration.zh.json`
 - 输出文件: `Content/Arena/All Arenas/{arena-folder}/tech-configuration.en.json`
 
@@ -45,9 +45,9 @@ implementation-details.md
 
 1. **扫描待处理 arena**：按以下优先级找出需要更新的目录：
    - **优先级 1（最高）**：缺少 `tech-configuration.zh.json` 或 `tech-configuration.en.json` 文件
-   - **优先级 2**：`implementation-details.md` 的修改时间晚于 `tech-configuration.zh.json`（源文件已更新）
+   - **优先级 2**：`Original Documents/implementation-details.md` 的修改时间晚于 `tech-configuration.zh.json`（源文件已更新）
 2. **并行生成 JSON**：使用 Agent 工具启动至少 3 个并行任务，每个任务：
-   - 读取 implementation-details.md
+   - 读取 Original Documents/implementation-details.md
    - 提取技术步骤表格（"3\. **技术步骤**" 部分）
    - 生成 tech-configuration.zh.json
    - 翻译生成 tech-configuration.en.json
@@ -65,7 +65,7 @@ implementation-details.md
 
 2. **其次检查修改时间**：
    - 使用 `stat -f %m` (macOS) 或 `stat -c %Y` (Linux) 获取文件修改时间戳
-   - 如果 `implementation-details.md` 时间戳 > `tech-configuration.zh.json` 时间戳，则需要更新
+   - 如果 `Original Documents/implementation-details.md` 时间戳 > `tech-configuration.zh.json` 时间戳，则需要更新
 
 ## JSON 结构
 

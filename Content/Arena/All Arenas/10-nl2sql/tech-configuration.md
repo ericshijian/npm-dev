@@ -1,0 +1,155 @@
+# 技术配置（原始提取）
+
+## 步骤 1：资源准备与环境配置
+
+### 步骤定义
+获取并预处理开源模型与评测集资源，完成所提方案运行所需的软硬件环境配置
+
+### 参与人员
+- 角色名称：算法工程师
+- 技能要求：
+1. 熟练使用多种思维链策略，对前沿与流行的开/闭源大模型资源较熟悉，有自己的使用经验、使用总结与心得
+2. 熟练掌握NLP经典深度学习模型（如Transformer系、LLaMA系、GLM系等）及相关资源（网站、库、博客等）；掌握至少一种常用深度学习开发框架，如PyTorch等；对GPT-3.5之后的大规模生成式语言模型（大模型）的工作原理和最新消息保持持续关注与兴趣
+3. 熟练掌握Python语言，会使用基本的正则表达式和命令行脚本；熟知NLP基础概念及经典任务（分类、匹配、序列标注、生成等）；能熟练运用常见NLP开源库（HanLP、LTP、Jieba等）
+4. 态度积极主动，沟通有条理，有好奇心与自驱力
+- 角色数量：1 人
+
+### 本步输入
+- 输入名称：环境配置所需资源
+- 输入介绍：
+检查运行环境的硬件是否满足下述要求：GPU 最好为 NVIDIA A10 及以上，显存 ≥ 16GB 的 GPU、CPU ≥8 核、内存 ≥ 32GB，操作系统为 Linux（Ubuntu 20.04+）。
+下载并安装相应的软件资源：
+配置vLLM模型框架
+下载BIRD Bench数据集
+下载大模型XiYanSQL-QwenCoder的相关代码、了解其基本用法
+（选做）下载并阅读BIRD评测集文献，了解其基本信息与用法
+- 输入示例：
+请列出清单自检：
+NVIDIA A10 及以上
+显存 ≥ 16GB 的GPU
+CPU ≥8 核
+内存 ≥ 32GB
+单条样本格式示例：
+- 资源链接：
+1. vLLM安装文档：https://vllm.hyper.ai/docs/getting-started/installation
+2. XiYanSQL-QwenCoder代码 Github：https://github.com/XGenerationLab/XiYanSQL-QwenCoder
+3. XiYanSQL-QwenCoder文献 Github：https://qwenlm.github.io/blog/qwen3-coder/
+4. BIRD评测集（含训练集和验证集）Github：https://bird-bench.github.io/
+5. BIRD评测集文献 arXiv：https://arxiv.org/abs/2507.04701
+
+### 本步产出
+- 输出名称：环境配置所需资源就绪
+- 输出介绍：服务器已配置GPU 驱动、Docker、vLLM，满足模型部署的硬件与系统要求；Bird Bench数据集已下载并解压完成。相关环境显示“配置成功”，数据集下载至本地以文件形式显示。
+
+### 预估时间
+1-2 日
+
+## 步骤 2：XiYanSQL-QwenCoder模型下载与部署
+
+### 步骤定义
+上一步配置环境就绪后，本步用于完成方案所需大模型的模型文件下载与配置，并验证模型能否正常运行、实现NL2SQL功能。
+
+### 参与人员
+- 角色名称：算法工程师
+- 技能要求：
+1. 熟练使用多种思维链策略，对前沿与流行的开/闭源大模型资源较熟悉，有自己的使用经验、使用总结与心得
+2. 熟练掌握NLP经典深度学习模型（如Transformer系、LLaMA系、GLM系等）及相关资源（网站、库、博客等）；掌握至少一种常用深度学习开发框架，如PyTorch等；对GPT-3.5之后的大规模生成式语言模型（大模型）的工作原理和最新消息保持持续关注与兴趣
+3. 熟练掌握Python语言，会使用基本的正则表达式和命令行脚本；熟知NLP基础概念及经典任务（分类、匹配、序列标注、生成等）；能熟练运用常见NLP开源库（HanLP、LTP、Jieba等）
+4. 态度积极主动，沟通有条理，有好奇心与自驱力
+- 角色数量：1 人
+
+### 本步输入
+- 输入名称：就绪的环境，模型配置所需资源
+- 输入介绍：
+下载模型文件
+安装配置下载好的模型文件
+运行大模型并确认正常工作
+- 输入示例： 模型下载和模型部署
+模型部署（基于vLLM）：
+```bash
+Model
+from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
+
+# 模型路径
+model_path = "XGenerationLab/XiYanSQL-QwenCoder-32B-2504" # 替换为本地模型路径
+
+# 初始化LLM和分词器
+llm = LLM(model=model_path, tensor_parallel_size=8) # 根据GPU数量调整tensor_parallel_size
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+# 配置采样参数
+sampling_params = SamplingParams(
+n=1,
+temperature=0.1,
+max_tokens=1024
+)
+
+# 准备提示词（同上）
+prompt = nl2sqlite_template_cn.format(
+dialect="PostgreSQL", # 选择对应的方言
+question="你的问题",
+db_schema="数据库schema信息",
+evidence="参考信息（可选）"
+)
+
+# 构建对话
+message = [{'role': 'user', 'content': prompt}]
+text = tokenizer.apply_chat_template(
+message,
+tokenize=False,
+add_generation_prompt=True
+)
+
+# 推理
+outputs = llm.generate([text], sampling_params=sampling_params)
+response = outputs[0].outputs[0].text
+print(response)
+```
+- 资源链接：
+1. XiYanSQL-QwenCoder模型文件 HuggingFace：https://huggingface.co/XGenerationLab/XiYanSQL-QwenCoder-32B-2504
+
+### 本步产出
+- 输出名称：模型就绪
+- 输出介绍：模型安装并运行成功，能够接收自然语言问题输入并准确输出对应的SQL语句。
+
+### 预估时间
+0.5-1 日
+
+## 步骤 3：基于Bird Bench数据集进行评测
+
+### 步骤定义
+使用Bird Bench dev（验证集）对已部署的模型进行评测，计算核心指标，对比榜单基准性能，确保模型在可运行基础上、满足当前方案需求。
+
+### 参与人员
+- 角色名称：算法工程师
+- 技能要求：
+1. 熟练使用多种思维链策略，对前沿与流行的开/闭源大模型资源较熟悉，有自己的使用经验、使用总结与心得
+2. 熟练掌握NLP经典深度学习模型（如Transformer系、LLaMA系、GLM系等）及相关资源（网站、库、博客等）；掌握至少一种常用深度学习开发框架，如PyTorch等；对GPT-3.5之后的大规模生成式语言模型（大模型）的工作原理和最新消息保持持续关注与兴趣
+3. 熟练掌握Python语言，会使用基本的正则表达式和命令行脚本；熟知NLP基础概念及经典任务（分类、匹配、序列标注、生成等）；能熟练运用常见NLP开源库（HanLP、LTP、Jieba等）
+4. 态度积极主动，沟通有条理，有好奇心与自驱力
+- 角色数量：1 人
+
+### 本步输入
+- 输入名称：就绪的模型，就绪的Bird Bench验证集，评测脚本
+- 输入介绍：
+确保模型与验证集就绪
+获取Bird Bench评测脚本，确保脚本能正常运行
+使用模型跑测验证集，并用评测脚本进行指标评测，记录下评测结果，并与Bird Bench官方发布的基线进行对比
+- 输入示例：
+命令行形式运行评测脚本：
+```text
+poetry run python -u ./bird_evaluation/src/evaluation.py \
+--predicted_sql_path ./mock_dataset/ --ground_truth_path ./mock_dataset/ \
+--db_root_path ./mock_dataset/databases/ --data_mode mock \
+--diff_json_path ./mock_dataset/questions.json
+```
+- 资源链接：
+1. Bird bench评测脚本 GitHub：https://github.com/arcwisedata/bird-sql
+
+### 本步产出
+- 输出名称：模型评测结果
+- 输出介绍：输出模型在评测集上跑测的结果，包含逻辑准确率、执行准确率等指标。对比Bird Bench官方发布基线后，结果打标，满足方案需求
+
+### 预估时间
+0.5-1 日

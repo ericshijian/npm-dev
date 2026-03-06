@@ -3,7 +3,7 @@
     "id": "1",
     "folderId": "1-intelligent-research-system",
     "title": {
-      "zh": "智能调研报告生成111",
+      "zh": "智能调研报告生成",
       "en": "Enterprise-Level Intelligent Research Report Generation System Demo"
     },
     "category": "服务,运营,管理",
@@ -29,7 +29,7 @@
     "id": "2",
     "folderId": "2-business-dashboard-website",
     "title": {
-      "zh": "业务看板搭建222",
+      "zh": "业务看板搭建",
       "en": "Business Dashboard & Website Demo"
     },
     "category": "服务,运营,营销",
@@ -107,7 +107,7 @@
     "id": "5",
     "folderId": "5-educational-app-children",
     "title": {
-      "zh": "儿童教育趣味应用555",
+      "zh": "儿童教育趣味应用",
       "en": "Educational App for Children Demo"
     },
     "category": "服务",
@@ -120,7 +120,7 @@
     "challenger": "私部署版：BISHENG + Kimi K2.5/GLM-5/Minimax M2.5/Qwen 3.5",
     "challengerEn": "Private Deployment: BISHENG + Kimi K2.5/GLM-5/Minimax M2.5/Qwen 3.5",
     "highlights": "一周搭建一个儿童教育应用Demo",
-    "highlightsEn": "Build a childrenâs educational app demo in one week",
+    "highlightsEn": "Build a children's educational app demo in one week",
     "metrics": {
       "speed": "一周",
       "quality": "中等",

@@ -14,13 +14,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Business liaison, product manager, and algorithm liaison conduct initial requirement discussions and brainstorming sessions to identify core requirements of this case",
-            "- Business liaison and algorithm liaison form a working group and communication channel, clarifying the liaisons and contact methods",
-            "- Business liaison, together with the product manager (with support from business-side technical liaison when necessary), clearly describes the content and effect plan of the target video to the algorithm liaison in text format",
-            "- Both parties communicate and supplement other materials needed for requirement confirmation, such as video scripts, copywriting, visual materials, etc.",
-            "- Algorithm liaison conducts requirement assessment based on meeting notes and provided documents and materials from both parties"
+            "1. Business liaison, product manager, and algorithm liaison conduct initial requirement discussions and brainstorming sessions to identify core requirements of this case",
+            "2. Business liaison and algorithm liaison form a working group and communication channel, clarifying the liaisons and contact methods",
+            "3. Business liaison, together with the product manager (with support from business-side technical liaison when necessary), clearly describes the content and effect plan of the target video to the algorithm liaison in text format",
+            "4. Both parties communicate and supplement other materials needed for requirement confirmation, such as video scripts, copywriting, visual materials, etc.",
+            "5. Algorithm liaison conducts requirement assessment based on meeting notes and provided documents and materials from both parties"
           ]
         },
         {
@@ -33,12 +33,12 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Establish working group, clarify liaisons and contact methods",
-            "- Complete project cooperation requirement form (i.e., target video plan), with preliminary organization of requirements"
+            "1. Establish working group, clarify liaisons and contact methods",
+            "2. Complete project cooperation requirement form (i.e., target video plan), with preliminary organization of requirements"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
             "1-2 days"
           ]
@@ -47,7 +47,7 @@
     },
     {
       "number": 2,
-      "title": "PHASE 2 Value Confirmation and Requirement Refinement",
+      "title": "PHASE 2 Value Confirmation and Requirements Refinement",
       "subsections": [
         {
           "title": "Team Composition",
@@ -60,13 +60,13 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Business liaison communicates with their business experts and related teams to confirm expected goals and business value of this solution implementation; business value should be quantified as much as possible with comparative data (such as current numbers, expected targets, expected improvement compared to current status, etc.)",
-            "- Algorithm liaison communicates with their algorithm experts and related teams to list items pending confirmation, while conducting preliminary research, assessment, and design of the solution",
-            "- Product manager communicates with business liaison and algorithm liaison to clarify requirements, then organizes relevant personnel from both parties to write the preliminary verification requirements document",
-            "- Both parties confirm requirements based on the preliminary verification requirements document, and plan schedule, budget, and resources according to confirmed requirements",
-            "- Repeat the above steps until the preliminary verification requirements document is finalized"
+            "1. Business liaison communicates with their business experts and related teams to confirm expected goals and business value of this solution implementation; business value should be quantified as much as possible with comparative data (such as current numbers, expected targets, expected improvement compared to current status, etc.)",
+            "2. Algorithm liaison communicates with their algorithm experts and related teams to list items pending confirmation, while conducting preliminary research, assessment, and design of the solution",
+            "3. Product manager communicates with business liaison and algorithm liaison to clarify requirements, then organizes relevant personnel from both parties to write the preliminary verification requirements document",
+            "4. Both parties confirm requirements based on the preliminary verification requirements document, and plan schedule, budget, and resources according to confirmed requirements",
+            "5. Repeat the above steps until the preliminary verification requirements document is finalized"
           ]
         },
         {
@@ -78,14 +78,14 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Preliminary verification requirements document: should include clear requirements, planning, and presentation effects of the target video",
-            "- Delivery confirmation items, such as start time, acceptance time, acceptance plan, etc."
+            "1. Preliminary verification requirements document: should include clear requirements, planning, and presentation effects of the target video",
+            "2. Delivery confirmation items, such as start time, acceptance time, acceptance plan, etc."
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "0.5-1 day"
+            "5-1 day"
           ]
         }
       ]
@@ -104,22 +104,22 @@
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Resource preparation and environment configuration",
-            "- Claude Code installation and configuration",
-            "- Build and start ffmpeg-mcp service",
-            "- Build and start funasr-mcp service",
-            "- Build and start paddle-speech-tts-mcp service",
-            "- Build custom MCP service for video compression ratio calculation and start it",
-            "- Configure and start song-generation service to support text-to-instrumental-music generation",
-            "- Start Claude Code to call the MCP services mentioned in the above steps to generate introduction video",
-            "- Algorithm liaison writes preliminary verification report",
-            "- Algorithm liaison completes video production",
-            "- Business liaison and product manager accept the video (first acceptance can serve as PoC)",
-            "- Business liaison, product manager, and algorithm liaison repeat 2-3 rounds of feedback and modification optimization",
-            "- Complete acceptance",
-            "- If planning to officially release the project, both parties closely negotiate, adjust the plan based on demo effects, finalize the project initiation report, and prepare project initiation agreement and launch matters"
+            "1. Resource preparation and environment configuration",
+            "2. Claude Code installation and configuration",
+            "3. Build and start ffmpeg-mcp service",
+            "4. Build and start funasr-mcp service",
+            "5. Build and start paddle-speech-tts-mcp service",
+            "6. Build custom MCP service for video compression ratio calculation and start it",
+            "7. Configure and start song-generation service to support text-to-instrumental-music generation",
+            "8. Start Claude Code to call the MCP services mentioned in the above steps to generate introduction video",
+            "9. Algorithm liaison writes preliminary verification report",
+            "10. Algorithm liaison completes video production",
+            "11. Business liaison and product manager accept the video (first acceptance can serve as PoC)",
+            "12. Business liaison, product manager, and algorithm liaison repeat 2-3 rounds of feedback and modification optimization",
+            "13. Complete acceptance",
+            "14. If planning to officially release the project, both parties closely negotiate, adjust the plan based on demo effects, finalize the project initiation report, and prepare project initiation agreement and launch matters"
           ]
         },
         {
@@ -141,55 +141,55 @@
         {
           "title": "Deliverables",
           "content": [
-            "- Finalized and delivered preliminary verification report",
-            "- Completed video",
-            "- Project initiation report",
-            "- Project initiation agreement (appendix should include delivery, acceptance, schedule, resources, etc. for the official release version)"
+            "1. Finalized and delivered preliminary verification report",
+            "2. Completed video",
+            "3. Project initiation report",
+            "4. Project initiation agreement (appendix should include delivery, acceptance, schedule, resources, etc. for the official release version)"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
-            "2.5-9.5 days"
+            "5-9.5 days"
           ]
         }
       ]
     },
     {
       "number": 4,
-      "title": "PHASE 4 Official Launch and Optimization Iteration",
+      "title": "PHASE 4 Official Launch and Iterative Optimization",
       "subsections": [
         {
           "title": "Team Composition",
           "content": [
-            "Determined according to the project initiation report"
+            "- Determined according to the project initiation report"
           ]
         },
         {
-          "title": "Implementation Content",
+          "title": "Implementation Steps",
           "content": [
-            "- Complete official project initiation, determine start time",
-            "- Implement and deliver according to project initiation report content and schedule plan",
-            "- Review and accept according to project initiation report goals and processes",
-            "- Operate and iterate according to project initiation report planning",
-            "- Complete project closure according to project initiation report planning and agreement terms"
+            "1. Complete official project initiation, determine start time",
+            "2. Implement and deliver according to project initiation report content and schedule plan",
+            "3. Review and accept according to project initiation report goals and processes",
+            "4. Operate and iterate according to project initiation report planning",
+            "5. Complete project closure according to project initiation report planning and agreement terms"
           ]
         },
         {
           "title": "Related Resources",
           "content": [
-            "/"
+            "- /"
           ]
         },
         {
           "title": "Deliverables",
           "content": [
-            "- All materials mutually agreed upon by both parties throughout the project lifecycle",
-            "- Officially launched product"
+            "1. All materials mutually agreed upon by both parties throughout the project lifecycle",
+            "2. Officially launched product"
           ]
         },
         {
-          "title": "Implementation Cycle",
+          "title": "Timeline",
           "content": [
             "3-6 months (varies depending on specific circumstances)"
           ]

@@ -13,19 +13,19 @@
         {
           "title": "Participants",
           "content": [
-            "Role Name: Frontend Engineer / Backend / Algorithm Engineer",
-            "Skill Requirements: Familiar with Node",
-            "Role Quantity: 1"
+            "- Role Name: Frontend Engineer/Backend/Algorithm Engineer",
+            "- Skill Requirements: Familiar with Node",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Install and configure Claude Code",
-            "Input Description: Install and configure Claude Code based on Node environment",
-            "Input Example:",
-            "Related commands as follows:",
-            "Bash",
+            "- Input Name: Install and Configure Claude Code",
+            "- Input Description: Install and configure Claude Code based on Node environment",
+            "- Input Example:",
+            "Related commands:",
+            "```bash",
             "# Install Claude Code",
             "npm install -g @anthropic-ai/claude-code",
             "",
@@ -36,25 +36,26 @@
             "# Configure model",
             "vim ~/.claude/settings.json",
             "{",
-            "\"env\": {",
-            "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"YOUR_HAIKU_MODEL\",",
-            "\"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"YOUR_SONNET_MODEL\",",
-            "\"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"YOUR_OPUS_MODEL\"",
-            "}",
+            "  \"env\": {",
+            "    \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"YOUR_HAIKU_MODEL\",",
+            "    \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"YOUR_SONNET_MODEL\",",
+            "    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"YOUR_OPUS_MODEL\"",
+            "  }",
             "}",
             "",
-            "# Confirm successful startup command, enter claude to access command line, configuration is complete when you receive a corresponding reply after entering any text without errors",
+            "# Start confirmation command, enter 'claude' to launch CLI. Configuration is complete when you receive corresponding responses without errors after inputting any text",
             "claude",
             "> your_input",
-            "Resource Link:",
-            "Claude Code GitHub: https://github.com/anthropics/claude-code"
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Available Claude Code service",
-            "Output Description: Use Claude Code to generate PRD files for the target website"
+            "- Output Name: Available Claude Code Service",
+            "- Output Description: Use Claude Code to generate PRD files for the target website"
           ]
         },
         {
@@ -78,33 +79,34 @@
         {
           "title": "Participants",
           "content": [
-            "Role Name: Product Manager",
-            "Skill Requirements: Knowledge of product and website building, familiar with markdown format",
-            "Role Quantity: 1"
+            "- Role Name: Product Manager",
+            "- Skill Requirements: Knowledge of product and website building, familiar with markdown format",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Generate website PRD via Claude Code",
-            "Input Description: Interact with Claude Code one or more times to generate a markdown format PRD file",
-            "Input Example:",
-            "Related commands as follows:",
-            "Bash",
-            "# Place existing materials in the project root directory, then start Claude Code",
+            "- Input Name: Generate Website PRD via Claude Code",
+            "- Input Description: Interact with Claude Code one or more times to generate a markdown format PRD file",
+            "- Input Example:",
+            "Related commands:",
+            "```bash",
+            "# Place existing materials in the project root directory, then launch Claude Code",
             "claude",
-            "> Generate website PRD based on existing materials and save as md file",
+            "> Generate a website PRD based on existing materials and save as an md file",
             "",
-            "# If unsatisfied with the generated PRD, continue the conversation. The corresponding md file will be updated in real-time by the model until it meets requirements",
-            "Resource Link:",
-            "Claude Code GitHub: https://github.com/anthropics/claude-code"
+            "# If unsatisfied with the generated PRD, continue the conversation. The md file will be updated in real-time by the AI until it meets requirements",
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: PRD file",
-            "Output Description: A markdown format PRD file that meets requirements"
+            "- Output Name: PRD File",
+            "- Output Description: A markdown format PRD file that meets requirements"
           ]
         },
         {
@@ -128,27 +130,27 @@
         {
           "title": "Participants",
           "content": [
-            "Role Name: Product Manager",
-            "Skill Requirements: Knowledge of product and website building",
-            "Role Quantity: 1"
+            "- Role Name: Product Manager",
+            "- Skill Requirements: Knowledge of product and website building",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Generate final website via Lovable",
-            "Input Description: Based on the PRD generated by Claude Code, interact with Lovable to generate the final website",
-            "Input Example:",
-            "Related operations as follows: Visit https://lovable.dev/, click Attach in the bottom left to upload the PRD file, briefly describe the website building requirements, such as \"Build a website based on the current PRD to implement all functions of XXX website (including interactions)\". If unsatisfied with details, you can continue to optimize through conversation",
-            "Resource Link:",
-            "Lovable: https://lovable.dev/"
+            "- Input Name: Generate Final Website via Lovable",
+            "- Input Description: Based on the PRD generated by Claude Code, interact with Lovable to generate the final website",
+            "- Input Example:",
+            "Related operations: Visit https://lovable.dev/, click \"Attach\" in the bottom left to upload the PRD file, briefly describe the website building requirements, such as \"Build the website based on the current PRD to implement all features of XXX website (including interactions)\". If unsatisfied with details, continue the conversation to optimize",
+            "- Resource Links:",
+            "1. Lovable: https://lovable.dev/"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Website prototype link",
-            "Output Description: A publicly accessible website prototype link on the internet"
+            "- Output Name: Website Prototype Link",
+            "- Output Description: A publicly accessible website prototype link"
           ]
         },
         {

@@ -1,0 +1,137 @@
+# 技术配置（原始提取）
+
+## 步骤 1：环境与依赖准备
+
+### 步骤定义
+配置Python 3.10+环境，并安装所有SOTA管道所需的核心库。
+
+### 参与人员
+- 角色名称：算法工程师
+- 技能要求：
+1. 熟悉Python虚拟环境管理 (venv 或 conda)
+2. 熟悉 pip等包管理工具，包括处理复杂的对等依赖
+- 角色数量：1 人
+
+### 本步输入
+- 输入名称：requirements.txt 文件
+- 输入介绍：
+包含所有必需的Python包，尤其是 unstructured 及其PDF解析所需的额外依赖
+- 输入示例：
+```xml
+# 编排与核心逻辑
+langchain
+langchain-community
+pydantic
+
+# LLM与嵌入 (以Ollama和开源模型为例)
+langchain-ollama
+transformers
+accelerate
+sentence-transformers
+
+# SOTA 解析层
+unstructured[pdf] # 关键：[pdf] 包含PDF解析依赖
+
+# 检索层
+faiss-cpu
+```
+- 资源链接
+1. LangChain GitHub：https://github.com/langchain-ai/langchain
+2. transformers Github： https://github.com/huggingface/transformers
+3. Langchain-community Github： https://github.com/langchain-ai/langchain-community
+4. Pydantic Github: https://github.com/pydantic/pydantic
+5. accelerate Github: https://github.com/huggingface/accelerate
+6. sentence-transformers Github: https://github.com/huggingface/sentence-transformers
+7. unstructured Github : https://github.com/Unstructured-IO/unstructured
+8. Faiss Github: https://github.com/facebookresearch/faiss
+
+### 本步产出
+- 输出名称：已配置的虚拟环境
+- 输出介绍：一个隔离的、包含所有SOTA依赖的Python环境。注意：unstructured[pdf] 可能需要额外的系统级依赖，如 poppler-utils 和 tesseract-ocr。
+
+### 预估时间
+0.5 日
+
+## 步骤 2：SOTA文档解析层：布局感知解析
+
+### 步骤定义
+使用 unstructured.io 库对输入的PDF文档进行深度布局感知解析，将其转换为结构化的语义元素（Elements）。
+
+### 参与人员
+- 角色名称：AI算法工程师
+- 技能要求：
+1. 熟悉 unstructured.io 库
+2. 理解不同解析策略（fast vs hi_res）对性能和准确率的影响
+3. 熟悉LangChain的DocumentLoader（文档加载器）接口
+- 角色数量：1
+
+### 本步输入
+- 输入名称：PDF文档
+- 输入介绍：复杂的、包含文本、表格、多级标题的半结构化PDF
+
+### 本步产出
+- 输出名称：结构化文档元素列表 (List of unstructured.documents.elements.Element)
+- 输出介绍：一个Python列表，其中每个元素都被分类为 Title, NarrativeText, Table 等，为后续的语义分块和检索奠定基础。
+
+### 预估时间
+0.5-1 日
+
+## 步骤 3：结构化输出模式定义
+
+### 步骤定义
+根据目标接口文档，使用 Pydantic 定义一个严格对应的、包含嵌套模型的Python BaseModel 类。
+
+### 参与人员
+- 角色名称：AI算法工程师 / 后端工程师
+- 技能要求：
+1. 精通 Pydantic BaseModel 定义
+2. 能够将JSON schema翻译为 BaseModel，包括 Field 定义、类型提示（typing.List, typing.bool）和嵌套模型
+- 角色数量：1
+
+### 本步输入
+- 输入名称：API接口文档
+- 输入介绍：目标JSON输出的详细schema，包括所有键、值类型和嵌套结构
+- 输入示例：
+completeness_check.sections 的Pydantic定义
+```python
+from pydantic import BaseModel, Field
+from typing import bool
+
+class CompletenessSections(BaseModel):
+info_introduction: bool = Field(..., description="文档是否包含'摘要'章节")
+info_method: bool = Field(..., description="文档是否包含'实施方案'章节")
+info_dataset: bool = Field(..., description="文档是否包含'数据介绍'章节")
+info_settings: bool = Field(..., description="文档是否包含'实施配置'章节")
+......
+```
+
+### 本步产出
+- 输出名称：DocumentCheckResult Pydantic 模型 (Python Class)
+- 输出介绍：一个可直接被LangChain的with_structured_output 调用的Python类，用于强制LLM输出合规的JSON
+
+### 预估时间
+1-1.5 日
+
+## 步骤 4：构建并执行E2E智能处理链
+
+### 步骤定义
+使用LangChain Expression Language (LCEL)编排一个完整的RAG管道：解析器 -> 分块 -> 检索器 -> 提示词 -> 基座模型 -> 结构化输出解析器，以全自动方式处理PDF并生成目标JSON。
+
+### 参与人员
+- 角色名称：算法工程师
+- 技能要求：
+1. 精通 LangChain (LCEL)，理解 RunnableParallel 和 RunnablePassthrough
+2. 熟悉 with_structured_output的使用，并能将其与Pydantic模型绑定。
+3. 具备高级提示词工程（Prompt Engineering）能力，能编写复杂的指令来指导LLM同时完成多项任务（分类、摘要、提取。
+- 角色数量：1 人
+
+### 本步输入
+- 输入名称：PDF文件存储路径, Pydantic模型, LLM实例
+- 输入介绍：步骤1、2、3的所有产出物，以及一个已初始化的 LangChain LLM 实例（如指向本地 Qwen模型的 ChatOllama 实例）。
+
+### 本步产出
+- 输出名称：符合规范的Pydantic对象（可序列化为JSON）
+- 输出介绍：对输入文档进行完整分析后，由SOTA RAG管道生成的、100%符合schema的结构化数据，可直接用于API返回。
+
+### 预估时间
+1.5-2 日

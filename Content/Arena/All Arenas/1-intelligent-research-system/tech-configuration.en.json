@@ -2,46 +2,50 @@
   "steps": [
     {
       "number": 1,
-      "title": "Resource Preparation and Environment Configuration-111",
+      "title": "Resource Preparation and Environment Configuration",
       "subsections": [
         {
           "title": "Step Definition",
           "content": [
-            "Check if Node, npm, and Python are installed, preparing for Claude Code installation in the next step"
+            "Check if Node, npm, and python are installed, preparing for the next step of installing Claude Code"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer",
-            "Skills Required:",
-            "Proficient in various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source LLM resources, with personal usage experience and insights",
-            "Proficient in classic NLP deep learning models (Transformer, LLaMA, GLM series) and related resources (websites, libraries, blogs); master at least one common deep learning framework like PyTorch; maintain interest in the working principles and latest developments of large-scale generative language models (LLMs) since GPT-3.5",
-            "Proficient in Python, basic regular expressions and command-line scripts; knowledgeable in NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation); skilled in common NLP libraries (HanLP, LTP, Jieba)",
-            "Proactive attitude, organized communication, curiosity and self-motivation",
-            "Number: 1 person"
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5",
+            "3. Proficient in Python language, able to use basic regular expressions and command line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1 person"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Install Node",
-            "Input Description: Install Node, npm, and Python via command line.",
-            "Input Example:",
-            "Related commands:",
+            "- Input Name: Install Node",
+            "- Input Description: Install Node, npm, and python through command line.",
+            "- Input Example:",
+            "Related commands are as follows:",
+            "```bash",
             "node -v",
             "Note: Output may be similar to \"v22.21.1\"",
+            "",
             "npm -v",
             "Note: Output may be similar to \"10.9.4\"",
+            "",
             "python -V",
-            "Note: Output may be similar to \"Python 3.11.13\""
+            "Note: Output may be similar to \"Python 3.11.13\"",
+            "```"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Environment configuration resources ready",
-            "Output Description: Server configured with Python and Node environments, meeting model deployment requirements"
+            "- Output Name: Environment configuration resources ready",
+            "- Output Description: Server has been configured with Python environment and Node environment, meeting the requirements for model deployment"
           ]
         },
         {
@@ -59,30 +63,33 @@
         {
           "title": "Step Definition",
           "content": [
-            "Install and configure Claude Code via Node"
+            "Install and configure Claude Code through Node"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer (Frontend/Backend Engineer)",
-            "Skills Required: Familiar with Node",
-            "Number: 1"
+            "- Role Name: Algorithm Engineer (Frontend Engineer/Backend Engineer)",
+            "- Skill Requirements: Familiar with node",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Install and Configure Claude Code",
-            "Input Description: Install and configure Claude Code based on Node environment",
-            "Input Example:",
-            "Related commands:",
+            "- Input Name: Install and Configure Claude Code",
+            "- Input Description: Install and configure Claude Code based on Node environment",
+            "- Input Example:",
+            "Related commands are as follows:",
+            "```bash",
             "# Install Claude Code",
             "npm install -g @anthropic-ai/claude-code",
-            "# Configure environment variables (using ~/.bashrc as example, similar for ~/.zshrc etc.)",
+            "",
+            "# Configure environment variables (using ~/.bashrc as an example, similar for others like ~/.zshrc)",
             "echo 'export ANTHROPIC_BASE_URL=\"YOUR_BASE_URL\"' >> ~/.bashrc",
             "echo 'export ANTHROPIC_AUTH_TOKEN=\"YOUR_AUTH_TOKEN\"' >> ~/.bashrc",
-            "# Configure models",
+            "",
+            "# Configure model",
             "vim ~/.claude/settings.json",
             "{",
             "  \"env\": {",
@@ -91,18 +98,20 @@
             "    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"YOUR_OPUS_MODEL\"",
             "  }",
             "}",
-            "# Verify successful startup, enter claude command line, type any text and receive response without errors",
+            "",
+            "# Startup success confirmation command, enter command line via claude, if you receive a corresponding reply after entering any text without errors, the configuration is complete",
             "claude",
             "> your_input",
-            "Resource Links:",
-            "Claude Code GitHub: https://github.com/anthropics/claude-code"
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Available Claude Code service",
-            "Output Description: Generate target website PRD files through Claude Code"
+            "- Output Name: Available Claude Code service",
+            "- Output Description: Generate PRD file for target website through Claude Code"
           ]
         },
         {
@@ -115,31 +124,34 @@
     },
     {
       "number": 3,
-      "title": "Tavily MCP Service Build and Startup (Optional)",
+      "title": "tavily-mcp Service Build and Start (Optional)",
       "subsections": [
         {
           "title": "Step Definition",
           "content": [
-            "Build tavily-mcp service with web search, content reading, and intelligent Q&A capabilities"
+            "Build tavily-mcp service, supporting web search, content reading, and intelligent Q&A capabilities"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm/Backend Engineer",
-            "Skills Required: Familiar with common Linux commands and Python",
-            "Number: 1"
+            "- Role Name: Algorithm/Backend Engineer",
+            "- Skill Requirements: Familiar with common linux commands and python",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Tavily MCP Service Build and Startup",
-            "Input Description: Install and start related MCP services using remote MCP server URL",
-            "Input Example:",
-            "Using remote MCP server URL with Tavily API key:",
+            "- Input Name: tavily-mcp service build and start",
+            "- Input Description: Use remote MCP server URL to install and start related mcp services",
+            "- Input Example:",
+            "Use remote MCP server URL and Tavily API key:",
+            "```text",
             "https://mcp.tavily.com/mcp/?tavilyApiKey=<your-api-key>",
-            "Add the following to .claude.json file:",
+            "```",
+            "- Add the following content to .claude.json file",
+            "```json",
             "{",
             "  \"mcpServers\": {",
             "    \"tavily-remote-mcp\": {",
@@ -148,18 +160,22 @@
             "    }",
             "  }",
             "}",
-            "Run the following to verify connection:",
+            "```",
+            "Run the following code to check if the connection is successful:",
+            "```bash",
             "claude mcp list",
-            "Note: Success indicator: \"tavily-remote-mcp: https://mcp.tavily.com/mcp (HTTP) - Connected\"",
-            "Resource Links:",
-            "Claude Code GitHub: https://github.com/anthropics/claude-code"
+            "",
+            "# Note: If you see something like \"tavily-remote-mcp: https://mcp.tavily.com/mcp (HTTP) - ✓ Connected\" then it's successful",
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Available tavily web search MCP service",
-            "Output Description: Build and start tavily-mcp service"
+            "- Output Name: Available tavily web search mcp service",
+            "- Output Description: Build and start tavily-mcp service"
           ]
         },
         {
@@ -172,42 +188,47 @@
     },
     {
       "number": 4,
-      "title": "Metaso MCP Service Build and Startup",
+      "title": "metaso-mcp Service Build and Start",
       "subsections": [
         {
           "title": "Step Definition",
           "content": [
-            "Build metaso-mcp service with web search, content reading, and intelligent Q&A capabilities"
+            "Build metaso-mcp service, supporting web search, content reading, and intelligent Q&A capabilities"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm/Backend Engineer",
-            "Skills Required: Familiar with common Linux commands",
-            "Number: 1"
+            "- Role Name: Algorithm/Backend Engineer",
+            "- Skill Requirements: Familiar with common linux commands",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Metaso MCP Service Build and Startup",
-            "Input Description: Install and start related MCP services using remote MCP server URL",
-            "Input Example:",
-            "Install metaso-mcp via command line:",
-            "claude mcp add -s user -t http search-metaso https://metaso.cn/api/mcp --header \"Authorization: Bearer xxx\" # Replace xxx with API key",
-            "Run the following to verify connection:",
+            "- Input Name: metaso-mcp service build and start",
+            "- Input Description: Use remote MCP server URL to install and start related mcp services",
+            "- Input Example:",
+            "Install metaso-mcp through command line:",
+            "```bash",
+            "claude mcp add -s user -t http search-metaso https://metaso.cn/api/mcp --header \"Authorization: Bearer xxx\" #Replace xxx with API key",
+            "```",
+            "Run the following code to check if the connection is successful:",
+            "```bash",
             "claude mcp list",
-            "Note: Success indicator: \"search-metaso: https://metaso.cn/api/mcp (HTTP) - Connected\"",
-            "Resource Links:",
-            "Claude Code GitHub: https://github.com/anthropics/claude-code"
+            "",
+            "# Note: If you see something like \"search-metaso: https://metaso.cn/api/mcp (HTTP) - ✓ Connected\" then it's successful",
+            "```",
+            "- Resource Links:",
+            "1. Claude Code GitHub: https://github.com/anthropics/claude-code"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Available metaso web search MCP service",
-            "Output Description: Build and start metaso-mcp service"
+            "- Output Name: Available metaso web search mcp service",
+            "- Output Description: Build and start metaso-mcp service"
           ]
         },
         {
@@ -220,61 +241,69 @@
     },
     {
       "number": 5,
-      "title": "GitHub, HuggingFace, arXiv MCP Service Build and Startup (Optional)",
+      "title": "github, huggingface, arxiv-mcp Service Build and Start (Optional)",
       "subsections": [
         {
           "title": "Step Definition",
           "content": [
-            "Build github-mcp service with GitHub search and content reading capabilities",
-            "Build huggingface-mcp service with HuggingFace search and content reading capabilities",
-            "Build arxiv-mcp service with arXiv search and content reading capabilities"
+            "Build github-mcp service, supporting GitHub website search and content reading capabilities",
+            "Build huggingface-mcp service, supporting Hugging Face website search and content reading capabilities",
+            "Build arxiv-mcp service, supporting arXiv website search and content reading capabilities"
           ]
         },
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm/Backend Engineer",
-            "Skills Required: Familiar with common Linux commands and Python",
-            "Number: 1"
+            "- Role Name: Algorithm/Backend Engineer",
+            "- Skill Requirements: Familiar with common linux commands and python",
+            "- Number of Roles: 1"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: GitHub, HuggingFace, arXiv MCP Service Build and Startup (Optional)",
-            "Input Description: Install and start related MCP services by installing Python dependencies",
-            "Input Example:",
-            "Create requirements.txt file:",
-            "# Python 3.10+ recommended, e.g., Python 3.11",
+            "- Input Name: github, huggingface, arxiv-mcp service build and start (optional)",
+            "- Input Description: Install and start related mcp services by installing python dependencies",
+            "- Input Example:",
+            "- Create requirements.txt file:",
+            "```bash",
+            "# Recommended python 3.10 or above, such as python 3.11",
+            "",
             "loguru>=0.7.0",
             "python-dotenv>=1.0.0",
             "mcp>=1.0.0",
-            "Create related service Python files:",
+            "```",
+            "- Create related service python files:",
             "[github_server.py]",
             "[hf_server.py]",
             "[arxiv_server.py]",
             "Install dependencies and start:",
+            "```bash",
             "pip install -r requirements.txt",
             "python github_server.py",
             "python hf_server.py",
             "python arxiv_server.py",
-            "Note: Success indicator: \"Uvicorn running on http://0.0.0.0:PORT (Press CTRL+C to quit)\"",
+            "",
+            "# Note: If you see something like \"Uvicorn running on http://0.0.0.0:PORT (Press CTRL+C to quit)\" then startup is successful",
+            "```",
             "Register MCP services:",
+            "```bash",
             "# arxiv",
             "claude mcp add -s user -t sse paper-arxiv http://127.0.0.1:4002/sse",
             "# github",
             "claude mcp add -s user -t sse code-github http://127.0.0.1:4001/sse",
             "# huggingface",
             "claude mcp add -s user -t sse model-huggingface http://127.0.0.1:4003/sse",
-            "Resource Links:",
-            "MCP Python SDK GitHub: https://github.com/modelcontextprotocol/python-sdk"
+            "```",
+            "- Resource Links:",
+            "1. mcp-python-sdk GitHub: https://github.com/modelcontextprotocol/python-sdk"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Available MCP services for GitHub, HuggingFace, and arXiv",
-            "Output Description: Build and start github-mcp, huggingface-mcp, arxiv-mcp services"
+            "- Output Name: Available mcp services for GitHub, Hugging Face, and arXiv websites",
+            "- Output Description: Build and start github, huggingface, arxiv-mcp services"
           ]
         },
         {
@@ -287,7 +316,7 @@
     },
     {
       "number": 6,
-      "title": "Generate Research Reports Using Claude Code",
+      "title": "Generate Research Report Using Claude Code",
       "subsections": [
         {
           "title": "Step Definition",
@@ -298,40 +327,49 @@
         {
           "title": "Participants",
           "content": [
-            "Role: Algorithm Engineer",
-            "Skills Required:",
-            "Proficient in various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source LLM resources, with personal usage experience and insights",
-            "Proficient in classic NLP deep learning models (Transformer, LLaMA, GLM series) and related resources (websites, libraries, blogs); master at least one common deep learning framework like PyTorch; maintain interest in the working principles and latest developments of large-scale generative language models (LLMs) since GPT-3.5",
-            "Proficient in Python, basic regular expressions and command-line scripts; knowledgeable in NLP fundamentals and classic tasks (classification, matching, sequence labeling, generation); skilled in common NLP libraries (HanLP, LTP, Jieba)",
-            "Proactive attitude, organized communication, curiosity and self-motivation",
-            "Number: 1 person"
+            "- Role Name: Algorithm Engineer",
+            "- Skill Requirements:",
+            "1. Proficient in using various chain-of-thought strategies, familiar with cutting-edge and popular open/closed-source large model resources, with personal usage experience, summaries, and insights",
+            "2. Proficient in NLP classic deep learning models (such as Transformer series, LLaMA series, GLM series, etc.) and related resources (websites, libraries, blogs, etc.); master at least one common deep learning development framework, such as PyTorch; maintain continuous attention and interest in the working principles and latest news of large-scale generative language models (large models) after GPT-3.5",
+            "3. Proficient in Python language, able to use basic regular expressions and command line scripts; familiar with NLP basic concepts and classic tasks (classification, matching, sequence labeling, generation, etc.); able to proficiently use common NLP open-source libraries (HanLP, LTP, Jieba, etc.)",
+            "4. Proactive attitude, organized communication, curiosity and self-motivation",
+            "- Number of Roles: 1 person"
           ]
         },
         {
-          "title": "Step Input",
+          "title": "Input",
           "content": [
-            "Input Name: Generate Research Reports Using Claude Code",
-            "Input Description: Interact with Claude Code to confirm input information for generating research reports",
-            "Input Example:",
-            "Provide existing research report template.md, research report generation workflow document skill.md, and flowchart.md",
-            "# Required materials",
-            "project_root/",
-            "files/ # Raw materials folder",
-            "research_report_template.md # Research report template (required)",
-            "skill.md # Research report generation workflow document (required)",
-            "full_research_report_workflow.md # Workflow diagram for document generation (required)",
-            "Start Claude Code in project root to generate research report:",
-            "# Start claude, ensure no other files except files/, skill.md, and flowchart in project root",
+            "- Input Name: Generate research report using Claude Code",
+            "- Input Description: Interact with Claude Code to confirm input information for generating research videos",
+            "- Input Example:",
+            "Pass in existing research report template.md, research report generation workflow document skill.md, and flowchart.md",
+            "```python",
+            "# Material requirements are as follows",
+            "Project root directory/",
+            "├── files/ # Raw materials folder",
+            "│ └── research_report_template.md # Research report template (required)",
+            "└── skill.md # Research report generation workflow document (required)",
+            "└── deep_research_report_generation_full_workflow.md # Flowchart for generating research documents (required)",
+            "```",
+            "deep_research_report_generation_full_workflow.md file is as follows",
+            "[deep_research_report_generation_full_workflow.md]",
+            "skill.md file is as follows",
+            "[SKILL.md]",
+            "Start Claude Code in the project root directory to generate research reports",
+            "```bash",
+            "# Start claude, please ensure there are no other files in the project root directory except files, skill.md, and flowchart",
             "claude",
-            "> Generate Deerflow research report based on skill.md",
-            "Note: There will be options requiring user confirmation during the process, then the final research report will be automatically generated"
+            "> Generate Deerflow research report according to skill.md",
+            "",
+            "# Note: During the process, there will be options that require user confirmation such as research direction, and then the final research report will be automatically generated",
+            "```"
           ]
         },
         {
-          "title": "Step Output",
+          "title": "Output",
           "content": [
-            "Output Name: Research Report",
-            "Output Description: Claude Code automatically generates the final research report"
+            "- Output Name: Research Report",
+            "- Output Description: Claude Code automatically generates the final research report"
           ]
         },
         {

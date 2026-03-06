@@ -1,0 +1,112 @@
+# 实施方案（原始提取）
+
+## 阶段 1：PHASE 1 需求识别与团队构建
+
+### 团队构成
+- 业务对接人（×1）：熟悉该案例对应业务工作的组织、流程、决策链路，擅长沟通，熟悉基本的项目管理、产品需求梳理方法
+- 业务侧技术对接人（×1）：通常为该案例最终工程实施的技术对接与负责人，辅助业务对接人在技术层面的沟通
+- 算法对接人（×1）：熟悉该案例对应业务工作的业界通行技术架构与流程、建设与规划，擅长沟通，有执行力
+
+### 实施内容
+1. 业务对接人和技术对接人与算法对接人进行初次需求接触与头脑风暴交流，梳理该案例的核心需求
+2. 业务对接人与算法对接人组建工作组及联络群，明确明确对接人与联络方式
+3. 业务对接人以文本形式向算法对接人清晰描述该文档解析任务的目标与效果等内容
+4. 双方沟通补充需求确认所需的其他材料，如样例文档、目标字段清单、范例输出、文档解析业务规则与经验等
+5. 算法对接人根据双方会议内容及反馈的文档和材料，展开需求评估
+
+### 相关资源
+- 模板：[项目合作需求问询书模板](https://gvxnc4ekbvn.feishu.cn/wiki/TXOqw6LDKiN1FrkhRtvcT6JdnVc?from=from_copylink)
+- 模板：[子任务算法需求模板](https://gvxnc4ekbvn.feishu.cn/wiki/Z4U4wXExviT9UOkeJIGc8EnKnAh?from=from_copylink)
+
+### 结果产出
+1. 成立工作组，明确对接人与联络方式
+2. 完成项目合作需求填写，对需求有初步梳理
+
+### 实施周期
+1-2日
+
+## 阶段 2：PHASE 2 价值确认与需求细化
+
+### 团队构成
+- 业务对接人（×1）：同PHASE 1
+- 业务专家（×1）：该案例对应业务工作中涉及核心业务模块的领导者、执行者或专家，协助业务对接人明确业务痛点与价值
+- 产品经理（×1）：熟悉该案例对应业务工作的组织、流程、决策链路，擅长沟通，协助业务对接人细化需求，并设计原型，该职位可由承做方提供
+- 业务侧技术对接人（×1）：同PHASE 1
+- 算法对接人（×1）：同PHASE 1
+- 算法专家（×1）：熟悉各场景与应用中业界目前的前沿与通用技术方案及选型，协助算法对接人评估需求，协调团队进行调研、设计方案与架构，协助评估排期
+
+### 实施内容
+1. 业务对接人与己方业务专家及相关团队沟通，确认该方案实施的预期目标及业务价值，业务价值需要尽可能量化，并有对比数据（如现状数字、预期达成目标、预期相比现状改善的程度等）
+2. 算法对接人与己方算法专家及相关团队沟通，罗列待确认事项，同时对方案进行初步调研、评估、设计
+3. 产品经理与业务对接人和算法对接人沟通、梳理并明确需求，之后组织双方相关人员撰写初步验证需求文档
+4. 双方根据初步验证需求文档进行需求确认，根据确认的需求规划排期、预算和资源。排期建议：首先以承接方完成初步验证、选型、产出Demo，并通过PoC为首个里程碑；之后双方进一步协商正式立项实施
+5. 重复以上步骤直至初步验证需求文档定稿
+
+### 相关资源
+- 模板：[初步验证需求文档模板](https://gvxnc4ekbvn.feishu.cn/wiki/PC8FwObgwiMwVPkM0i4cYkr2nYf?from=from_copylink)
+
+### 结果产出
+1. 初步验证需求文档
+2. PoC相关事项确认，如启动时间、验收时间、验收方案等
+
+### 实施周期
+2-3日
+
+## 阶段 3：PHASE 3 初步验证与立项
+
+### 团队构成
+- 业务对接人（×1）：同PHASE 1
+- 算法对接人（×1）：同PHASE 1
+- 算法工程师（×1）：熟悉Python虚拟环境管理、包管理工具等运用；熟悉LangChain、RAG、提示工程、基座模型部署与调用等相关技能
+
+### 实施内容
+1. 资源准备与环境配置
+2. 使用 unstructured.io 库对输入的PDF文档进行深度布局感知解析，将其转换为结构化的语义元素（Elements）
+3. 根据目标接口文档，使用 Pydantic 库定义一个严格对应的、包含嵌套模型的Python BaseModel 类
+4. 使用LangChain Expression Language (LCEL) 编排一个完整的检索增强生成（RAG）管道：解析器 -> 分块 -> 检索器 -> 提示词 -> 基座模型 -> 结构化输出解析器，以全自动方式处理PDF并生成目标JSON
+5. 算法团队撰写初步验证报告
+6. 完成PoC
+7. 双方密切沟通，确认是否正式立项
+8. 若计划立项正式发布，双方就Demo效果调整方案，定稿立项报告，准备立项协议及启动事宜
+
+### 相关资源
+- LangChain GitHub：https://github.com/langchain-ai/langchain
+- transformers Github： https://github.com/huggingface/transformers
+- Langchain-community Github： https://github.com/langchain-ai/langchain-community
+- Pydantic Github: https://github.com/pydantic/pydantic
+- accelerate Github: https://github.com/huggingface/accelerate
+- sentence-transformers Github: https://github.com/huggingface/sentence-transformers
+- unstructured Github : https://github.com/Unstructured-IO/unstructured
+- Faiss Github: https://github.com/facebookresearch/faiss
+- 模板：[初步验证报告模板](https://gvxnc4ekbvn.feishu.cn/wiki/HKZGwXetBije9HklRQmcAe94nZE?from=from_copylink)
+
+### 结果产出
+1. 定稿并交付初步验证报告
+2. 完成Demo构建，准备并最终通过PoC
+3. 立项报告
+4. 立项协议（附件应包含正式上线版本的交付、验收、排期、资源等内容）
+
+### 实施周期
+3.5-5日
+
+## 阶段 4：PHASE 4 正式上线与优化迭代
+
+### 团队构成
+- 按立项报告确定
+
+### 实施内容
+1. 完成正式立项，确定启动时间
+2. 按立项报告内容与排期计划来实施与交付
+3. 按立项报告目标与流程来评审与验收
+4. 按立项报告规划来进行运营与迭代
+5. 按立项报告规划及协议约定，完成结项
+
+### 相关资源
+- /
+
+### 结果产出
+1. 项目全周期所有双方协商达成一致的材料
+2. 正式上线的产品
+
+### 实施周期
+3-6月（因具体情况而异）
